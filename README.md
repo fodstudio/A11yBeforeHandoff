@@ -1,6 +1,6 @@
 # A11y Before Handoff
 
-A practical accessibility handoff tool for product designers.
+A practical accessibility handoff tool for everyone building digital products.
 
 This starter contains:
 
@@ -8,11 +8,11 @@ This starter contains:
 - **Three languages** — complete English, Japanese, and Korean interface and guidance content.
 - **Light and dark themes** — follows the system on first visit, then remembers the reader's choice.
 - **URL accessibility report** — fetches a public page, runs a safe static-HTML first pass, scores automated findings, separates manual checks, and exports JSON.
-- **Public Figma review** — recognizes Design, Prototype, FigJam, and Slides share links, preserves targeted node IDs, embeds the public preview, and creates a designer-focused manual review report without inventing an automated compliance score.
+- **Public Figma review** — recognizes Design, Prototype, FigJam, and Slides share links, preserves targeted node IDs, embeds the public preview, and creates a team-focused manual review report without inventing an automated compliance score.
 - **Figma plugin MVP** — selection checks, a manual handoff checklist, annotation creation, and Markdown/JSON export.
 - **Shared content package** — one typed source of truth for guidance used by both experiences.
 
-The product deliberately does not promise a full WCAG audit. It focuses on the decisions designers can make and document during design and handoff.
+The product deliberately does not promise a full WCAG audit. It focuses on the decisions product teams can make and document during design and handoff.
 
 ## Project structure
 
@@ -92,7 +92,7 @@ Edit `packages/content/src/index.ts`. Each item has a stable ID because checked 
 ## Suggested next milestones
 
 - Add contrast calculation for solid fills and nearby backgrounds.
-- Add role-specific views for visual, UX, content, and design-system designers.
+- Add role-specific views for design, engineering, product, content, and accessibility work.
 - Add annotation variants for focus order and reading order.
 - Add automated tests for filtering, progress persistence, and exports.
 - Publish the web app and prepare Figma Community artwork/privacy notes.

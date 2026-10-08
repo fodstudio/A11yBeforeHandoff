@@ -7,8 +7,8 @@ export function AboutPage() {
     <div className="page-width page-content about-page">
       <header className="page-hero about-hero"><p className="eyebrow"><span /> {t("about.eyebrow")}</p><h1>{t("about.title1")}<br /><em>{t("about.title2")}</em></h1><p>{t("about.lead")}</p></header>
       <section className="about-grid">
-        <div><p className="section-number">{t("about.position")}</p><h2>{t("about.heading")}</h2></div>
-        <div className="prose"><p>{t("about.p1")}</p><p>{t("about.p2")}</p></div>
+        <div><p className="section-number">{t("about.position")}</p><h2>{t("about.teamHeading")}</h2></div>
+        <div className="prose"><p>{t("about.teamP1")}</p><p>{t("about.p2")}</p></div>
       </section>
       <section className="user-friction">
         <div className="user-friction-heading">
