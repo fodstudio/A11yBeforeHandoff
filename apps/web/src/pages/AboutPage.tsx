@@ -17,7 +17,7 @@ export function AboutPage() {
           <p>{t("about.frictionLead")}</p>
         </div>
         <ol className="user-friction-list">
-          <li><span>01</span><div><h3>{t("about.friction1Title")}</h3><p>{t("about.friction1Copy")}</p></div></li>
+          <li><span>01</span><div><h3>{t("about.friction1DisplayTitle")}</h3><p>{t("about.friction1Copy")}</p></div></li>
           <li><span>02</span><div><h3>{t("about.friction2Title")}</h3><p>{t("about.friction2Copy")}</p></div></li>
           <li><span>03</span><div><h3>{t("about.friction3Title")}</h3><p>{t("about.friction3Copy")}</p></div></li>
         </ol>
