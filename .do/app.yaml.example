@@ -10,7 +10,7 @@ services:
   - name: web
     environment_slug: node-js
     github:
-      repo: YOUR_GITHUB_NAME/a11y-before-handoff
+        repo: fodstudio/A11yBeforeHandoff
       branch: main
       deploy_on_push: true
     source_dir: /
