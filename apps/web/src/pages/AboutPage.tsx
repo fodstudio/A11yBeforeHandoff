@@ -10,6 +10,18 @@ export function AboutPage() {
         <div><p className="section-number">{t("about.position")}</p><h2>{t("about.heading")}</h2></div>
         <div className="prose"><p>{t("about.p1")}</p><p>{t("about.p2")}</p></div>
       </section>
+      <section className="user-friction">
+        <div className="user-friction-heading">
+          <p className="section-number">{t("about.frictionEyebrow")}</p>
+          <h2>{t("about.frictionTitle")}</h2>
+          <p>{t("about.frictionLead")}</p>
+        </div>
+        <ol className="user-friction-list">
+          <li><span>01</span><div><h3>{t("about.friction1Title")}</h3><p>{t("about.friction1Copy")}</p></div></li>
+          <li><span>02</span><div><h3>{t("about.friction2Title")}</h3><p>{t("about.friction2Copy")}</p></div></li>
+          <li><span>03</span><div><h3>{t("about.friction3Title")}</h3><p>{t("about.friction3Copy")}</p></div></li>
+        </ol>
+      </section>
       <section className="boundaries">
         <p className="section-number">{t("about.boundary")}</p>
         <div className="boundary-grid">
