@@ -2,6 +2,8 @@
 
 A practical accessibility handoff tool for everyone building digital products.
 
+See [SEO.md](./SEO.md) for the search positioning, page-to-query map, content priorities, and launch checklist.
+
 This starter contains:
 
 - **Web app** — a quick checklist, component-specific guidance, search, filters, and local progress tracking.

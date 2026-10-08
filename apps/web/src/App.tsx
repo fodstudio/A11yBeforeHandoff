@@ -9,6 +9,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { AuditPage } from "./pages/AuditPage";
 import { FigmaPluginPage } from "./pages/FigmaPluginPage";
 import { usePreferences } from "./preferences";
+import { SeoManager } from "./SeoManager";
 import type { Locale } from "@a11y/content";
 
 function ScrollToTop() {
@@ -38,6 +39,7 @@ export function App() {
   return (
     <div className="site-shell">
       <ScrollToTop />
+      <SeoManager />
       <a className="skip-link" href="#main">{t("skip")}</a>
       <header className="site-header">
         <NavLink className="brand" to="/" aria-label="A11y Before Handoff home">
