@@ -91,7 +91,7 @@ export function HomePage() {
           </div>
 
           <div className="plugin-demo home-plugin-demo" aria-label={plugin.preview}>
-            <div className="plugin-demo-bar"><span /><span /><span /><strong>A11y Before Handoff</strong></div>
+            <div className="plugin-demo-bar"><span /><span /><span /><strong>A11y Handoff</strong></div>
             <div className="plugin-demo-tabs"><b>Audit</b><span>Checklist</span><span>Annotate</span><span>Export</span></div>
             <div className="plugin-demo-body">
               <p>{plugin.selection}</p>

@@ -42,9 +42,9 @@ export function App() {
       <SeoManager />
       <a className="skip-link" href="#main">{t("skip")}</a>
       <header className="site-header">
-        <NavLink className="brand" to="/" aria-label="A11y Before Handoff home">
+        <NavLink className="brand" to="/" aria-label="A11y Handoff home">
           <Mark />
-          <span>Before Handoff</span>
+          <span>Handoff</span>
         </NavLink>
         <nav className="main-nav" aria-label="Main navigation">
           <NavLink to="/audit">{t("nav.audit")}</NavLink>

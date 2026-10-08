@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { componentGuides, localizeComponentGuide, type Locale } from "@a11y/content";
 import { usePreferences } from "./preferences";
 
-const siteName = "A11y Before Handoff";
+const siteName = "A11y Handoff";
 const siteUrl = (import.meta.env.VITE_SITE_URL || "https://a11yhandoff.com").replace(/\/$/, "");
 
 type SeoCopy = { title: string; description: string };
@@ -16,7 +16,7 @@ const routeCopy: Record<Locale, Record<StaticRoute, SeoCopy>> = {
     "/checklist": { title: "WCAG Accessibility Checklist", description: "Review color, content, structure, interaction, focus, motion, and media decisions before handoff." },
     "/components": { title: "Accessible UI Component Guides", description: "Practical accessibility guidance for buttons, dialogs, forms, navigation, cards, and toasts." },
     "/figma-plugin": { title: "Free Figma Accessibility Plugin", description: "Run selection checks, create handoff annotations, review a checklist, and export accessibility notes from Figma." },
-    "/about": { title: "Why A11y Before Handoff Exists", description: "See how A11y Before Handoff turns accessibility standards into practical questions for digital product teams." }
+    "/about": { title: "Why A11y Handoff Exists", description: "See how A11y Handoff turns accessibility standards into practical questions for digital product teams." }
   },
   ja: {
     "/": { title: "アクセシビリティ・チェックリストとURL診断", description: "WCAGとEAAの文脈に基づく、無料のアクセシビリティ・チェックリスト、URL診断、コンポーネントガイド、Figmaツール。" },
@@ -24,7 +24,7 @@ const routeCopy: Record<Locale, Record<StaticRoute, SeoCopy>> = {
     "/checklist": { title: "WCAGアクセシビリティ・チェックリスト", description: "色、コンテンツ、構造、操作、フォーカス、動き、メディアをハンドオフ前に確認します。" },
     "/components": { title: "アクセシブルなUIコンポーネントガイド", description: "ボタン、ダイアログ、フォーム、ナビゲーション、カード、トーストの実践的なアクセシビリティガイド。" },
     "/figma-plugin": { title: "無料Figmaアクセシビリティプラグイン", description: "Figmaで選択チェック、注釈作成、チェックリスト確認、アクセシビリティノートの書き出しができます。" },
-    "/about": { title: "A11y Before Handoffについて", description: "アクセシビリティ基準を、デジタルプロダクトチームの実践的な問いに変える理由を紹介します。" }
+    "/about": { title: "A11y Handoffについて", description: "アクセシビリティ基準を、デジタルプロダクトチームの実践的な問いに変える理由を紹介します。" }
   },
   ko: {
     "/": { title: "접근성 핸드오프 체크리스트와 URL 진단", description: "WCAG와 EAA 맥락을 바탕으로 한 무료 접근성 체크리스트, URL 진단, 컴포넌트 가이드와 Figma 도구입니다." },
@@ -32,7 +32,7 @@ const routeCopy: Record<Locale, Record<StaticRoute, SeoCopy>> = {
     "/checklist": { title: "WCAG 접근성 체크리스트", description: "색상, 콘텐츠, 구조, 인터랙션, 포커스, 모션과 미디어 결정을 핸드오프 전에 검토하세요." },
     "/components": { title: "접근 가능한 UI 컴포넌트 가이드", description: "버튼, 대화상자, 폼, 내비게이션, 카드와 토스트를 위한 실용적인 접근성 가이드입니다." },
     "/figma-plugin": { title: "무료 Figma 접근성 플러그인", description: "Figma에서 선택 항목 검사, 핸드오프 애노테이션, 체크리스트 검토와 접근성 노트 내보내기를 할 수 있습니다." },
-    "/about": { title: "A11y Before Handoff를 만든 이유", description: "접근성 표준을 디지털 제품 팀이 활용할 수 있는 실용적인 질문으로 바꾸는 이유를 소개합니다." }
+    "/about": { title: "A11y Handoff를 만든 이유", description: "접근성 표준을 디지털 제품 팀이 활용할 수 있는 실용적인 질문으로 바꾸는 이유를 소개합니다." }
   }
 };
 

@@ -84,7 +84,7 @@ function renderExport() {
 function render() {
   const labels: Record<Tab, string> = { audit: "Audit", checklist: "Checklist", annotation: "Annotate", export: "Export" };
   const content = currentTab === "audit" ? renderAudit() : currentTab === "checklist" ? renderChecklist() : currentTab === "annotation" ? renderAnnotation() : renderExport();
-  root.innerHTML = `<div class="shell"><header class="topbar"><div class="brand"><span class="mark">A11y</span><span>Before Handoff</span></div><span class="selection-pill" title="${escapeHtml(selection?.name || "Nothing selected")}">${escapeHtml(selection?.name || "Nothing selected")}</span></header>
+  root.innerHTML = `<div class="shell"><header class="topbar"><div class="brand"><span class="mark">A11y</span><span>Handoff</span></div><span class="selection-pill" title="${escapeHtml(selection?.name || "Nothing selected")}">${escapeHtml(selection?.name || "Nothing selected")}</span></header>
     <nav class="tabs" aria-label="Plugin sections">${(Object.keys(labels) as Tab[]).map((tab) => `<button class="${currentTab === tab ? "active" : ""}" data-tab="${tab}">${labels[tab]}</button>`).join("")}</nav><main class="panel">${content}</main></div>`;
 }
 

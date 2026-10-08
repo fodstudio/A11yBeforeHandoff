@@ -2,7 +2,7 @@
 
 ## Positioning
 
-A11y Before Handoff is a free, practical accessibility tool for people building digital products. Search pages should lead with the task a visitor wants to complete, then explain the WCAG or EAA context without promising legal compliance.
+A11y Handoff is a free, practical accessibility tool for people building digital products. Search pages should lead with the task a visitor wants to complete, then explain the WCAG or EAA context without promising legal compliance.
 
 Primary search themes:
 

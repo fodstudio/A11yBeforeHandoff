@@ -1,4 +1,4 @@
-# A11y Before Handoff
+# A11y Handoff
 
 A practical accessibility handoff tool for everyone building digital products.
 
@@ -74,7 +74,7 @@ A reusable App Platform specification template is available at `.do/app.yaml.exa
 1. Run `npm install` and `npm run build` once.
 2. In the Figma desktop app, open **Plugins → Development → Import plugin from manifest…**.
 3. Select `apps/figma-plugin/manifest.json`.
-4. Run **A11y Before Handoff** from the Development section.
+4. Run **A11y Handoff** from the Development section.
 5. During development, keep `npm run dev:plugin` running and reopen the plugin after edits.
 
 The MVP can inspect a selection, record manual checklist progress on the selected node, create a visual annotation beside the selection, and copy or download a handoff report. Automated checks are intentionally limited to facts that Figma exposes reliably; they are prompts, not a certification.

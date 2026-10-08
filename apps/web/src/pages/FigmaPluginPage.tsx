@@ -43,7 +43,7 @@ const copy = {
       ["Install the project", "From the project folder, run npm install once."],
       ["Build the plugin", "Run npm run build to create the plugin files."],
       ["Import the manifest", "In Figma desktop, choose Plugins → Development → Import plugin from manifest."],
-      ["Start reviewing", "Select apps/figma-plugin/manifest.json, then run A11y Before Handoff from Development."],
+      ["Start reviewing", "Select apps/figma-plugin/manifest.json, then run A11y Handoff from Development."],
     ],
     path: "Manifest path",
     note: "The MVP supports the Figma design editor. It does not claim automated WCAG conformance.",
@@ -58,7 +58,7 @@ const copy = {
       ["Build the plugin", "Create the JavaScript and interface files that Figma can run.", "npm run build"],
       ["Open a Figma Design file", "Use the latest Figma desktop app and open any Figma Design file. Select a layer if you want to test the audit immediately.", ""],
       ["Import the manifest", "Right-click the canvas, then choose Plugins → Development → Import plugin from manifest. Select the exact file shown below.", "apps/figma-plugin/manifest.json"],
-      ["Run A11y Before Handoff", "Open the Actions menu, find the plugin under Development, and run it. Figma keeps the local plugin available for future sessions.", ""],
+      ["Run A11y Handoff", "Open the Actions menu, find the plugin under Development, and run it. Figma keeps the local plugin available for future sessions.", ""],
     ],
     rebuildTitle: "After changing the code",
     rebuildCopy: "Build again, then close and reopen the plugin in Figma. You do not need to import the manifest again.",
@@ -130,7 +130,7 @@ const copy = {
       ["プラグインをビルド", "Figmaで実行できるJavaScriptと画面ファイルを作成します。", "npm run build"],
       ["Figma Designファイルを開く", "最新版のFigmaデスクトップアプリで任意のDesignファイルを開きます。すぐ試すならレイヤーを一つ選択します。", ""],
       ["マニフェストを読み込む", "キャンバスを右クリックし、Plugins → Development → Import plugin from manifestを選び、下記ファイルを指定します。", "apps/figma-plugin/manifest.json"],
-      ["プラグインを実行", "Actionsメニューを開き、DevelopmentからA11y Before Handoffを実行します。次回以降もローカルプラグインとして表示されます。", ""],
+      ["プラグインを実行", "Actionsメニューを開き、DevelopmentからA11y Handoffを実行します。次回以降もローカルプラグインとして表示されます。", ""],
     ],
     rebuildTitle: "コードを変更した後",
     rebuildCopy: "もう一度ビルドし、Figmaのプラグイン画面を閉じて開き直します。マニフェストの再読み込みは不要です。",
@@ -202,7 +202,7 @@ const copy = {
       ["플러그인 빌드", "Figma가 실행할 수 있는 JavaScript와 화면 파일을 만듭니다.", "npm run build"],
       ["Figma Design 파일 열기", "최신 Figma 데스크톱 앱에서 아무 Design 파일이나 엽니다. 바로 테스트하려면 레이어 하나를 선택하세요.", ""],
       ["매니페스트 가져오기", "캔버스를 오른쪽 클릭한 뒤 Plugins → Development → Import plugin from manifest를 선택하고 아래 파일을 지정합니다.", "apps/figma-plugin/manifest.json"],
-      ["플러그인 실행", "Actions 메뉴를 열고 Development에서 A11y Before Handoff를 실행합니다. 다음부터도 로컬 플러그인 목록에 유지됩니다.", ""],
+      ["플러그인 실행", "Actions 메뉴를 열고 Development에서 A11y Handoff를 실행합니다. 다음부터도 로컬 플러그인 목록에 유지됩니다.", ""],
     ],
     rebuildTitle: "코드를 수정한 뒤에는",
     rebuildCopy: "다시 빌드하고 Figma 플러그인 창을 닫았다가 Development에서 다시 여세요. 매니페스트를 다시 가져올 필요는 없습니다.",
@@ -244,7 +244,7 @@ export function FigmaPluginPage() {
         </div>
 
         <div className="plugin-demo" aria-label="Plugin interface preview">
-          <div className="plugin-demo-bar"><span /><span /><span /><strong>A11y Before Handoff</strong></div>
+          <div className="plugin-demo-bar"><span /><span /><span /><strong>A11y Handoff</strong></div>
           <div className="plugin-demo-tabs"><b>Audit</b><span>Checklist</span><span>Annotate</span><span>Export</span></div>
           <div className="plugin-demo-body">
             <p>{c.mockSelection}</p>
