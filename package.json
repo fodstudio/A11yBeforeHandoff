@@ -1,0 +1,22 @@
+{
+  "name": "a11y-before-handoff",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A practical accessibility handoff tool for product designers.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "npm run dev --workspace @a11y/web",
+    "dev:plugin": "npm run dev --workspace @a11y/figma-plugin",
+    "build": "npm run build --workspaces --if-present",
+    "deploy:build": "npm run build --workspace @a11y/web && npm run build --workspace @a11y/server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "start": "npm run start --workspace @a11y/server"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,60 @@
+:root {
+  color-scheme: light dark;
+  --bg: var(--figma-color-bg, #f4f1e9);
+  --surface: var(--figma-color-bg-secondary, #fffdf8);
+  --text: var(--figma-color-text, #171714);
+  --muted: var(--figma-color-text-secondary, #696860);
+  --border: var(--figma-color-border, #d6d1c6);
+  --brand: #d9fa49;
+  --violet: #7b61ff;
+  --warning: #fff1c7;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, textarea { font: inherit; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--figma-color-border-brand, #7b61ff); outline-offset: 2px; }
+.shell { min-height: 100vh; }
+.topbar { min-height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-bottom: 1px solid var(--border); }
+.brand { display: flex; align-items: center; gap: 9px; font-weight: 700; }
+.mark { display: inline-grid; place-items: center; width: 28px; height: 28px; color: #171714; background: var(--brand); border: 1px solid #171714; font-size: 10px; }
+.selection-pill { max-width: 155px; overflow: hidden; padding: 6px 9px; border-radius: 99px; color: var(--muted); background: var(--surface); text-overflow: ellipsis; white-space: nowrap; }
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); }
+.tabs button { height: 43px; padding: 0 4px; border: 0; border-bottom: 2px solid transparent; color: var(--muted); background: transparent; cursor: pointer; }
+.tabs button.active { border-color: var(--violet); color: var(--text); font-weight: 600; }
+.panel { padding: 16px; }
+.intro { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.intro h1 { margin: 0 0 5px; font-size: 18px; letter-spacing: -.02em; }
+.intro p { margin: 0; color: var(--muted); line-height: 1.45; }
+.icon-button { flex: 0 0 auto; width: 31px; height: 31px; border: 1px solid var(--border); border-radius: 4px; color: var(--text); background: var(--surface); cursor: pointer; }
+.empty { padding: 55px 25px; border: 1px dashed var(--border); text-align: center; }
+.empty span { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 15px; border-radius: 50%; background: var(--brand); color: #171714; font-size: 22px; }
+.empty h2 { margin: 0 0 7px; font-size: 15px; }.empty p { margin: 0; color: var(--muted); line-height: 1.5; }
+.selection-meta { display: flex; gap: 8px; margin-bottom: 13px; }
+.selection-meta span { padding: 4px 7px; border: 1px solid var(--border); border-radius: 3px; color: var(--muted); font-size: 10px; }
+.audit-list { display: grid; gap: 8px; }
+.audit-card { display: grid; grid-template-columns: 23px 1fr; gap: 10px; padding: 12px; border: 1px solid var(--border); background: var(--surface); }
+.status { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; color: #171714; font-size: 10px; }
+.status-pass { background: #8be1bc; }.status-review { background: #ffc468; }.status-info { color: white; background: var(--violet); }
+.audit-card h3 { margin: 2px 0 4px; font-size: 12px; }.audit-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.disclaimer { margin: 14px 0 0; padding: 10px; color: var(--muted); background: color-mix(in srgb, var(--surface), transparent 30%); font-size: 10px; line-height: 1.5; }
+.progress { height: 5px; overflow: hidden; margin: 5px 0 16px; border-radius: 99px; background: var(--border); }.progress span { display: block; height: 100%; background: var(--violet); }
+.checklist-groups { display: grid; gap: 17px; }.checklist-group h2 { margin: 0 0 7px; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+.manual-check { display: grid; grid-template-columns: 21px 1fr; gap: 9px; align-items: start; padding: 9px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.manual-check input { appearance: none; width: 17px; height: 17px; margin: 0; border: 1px solid var(--text); border-radius: 50%; }
+.manual-check input:checked { background: var(--brand); box-shadow: inset 0 0 0 4px var(--bg); }.manual-check strong { display: block; font-size: 11px; line-height: 1.4; }.manual-check small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+.sticky-actions { position: sticky; bottom: 0; display: flex; gap: 8px; padding: 12px 0 0; background: var(--bg); }
+.primary, .secondary { min-height: 37px; padding: 0 13px; border: 1px solid var(--text); border-radius: 3px; font-weight: 600; cursor: pointer; }
+.primary { color: #171714; background: var(--brand); }.secondary { color: var(--text); background: var(--surface); }
+.full { width: 100%; }
+.field { display: grid; gap: 5px; margin-bottom: 12px; }.field label { color: var(--muted); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }.field input, .field textarea { width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 3px; color: var(--text); background: var(--surface); }.field textarea { min-height: 64px; resize: vertical; line-height: 1.4; }
+.helper { padding: 10px; margin-bottom: 13px; border-left: 3px solid var(--violet); color: var(--muted); background: var(--surface); line-height: 1.45; }
+.export-preview { min-height: 290px; max-height: 390px; overflow: auto; margin: 0 0 12px; padding: 13px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); font: 10px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; }
+.action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.toast { position: fixed; left: 16px; right: 16px; bottom: 14px; z-index: 10; padding: 11px 13px; border: 1px solid #171714; color: #171714; background: var(--brand); box-shadow: 3px 3px 0 #171714; font-weight: 600; }
+.toast.warning { background: #ffc468; }
+@media (prefers-color-scheme: dark) { .manual-check input:checked { box-shadow: inset 0 0 0 4px var(--bg); } }
+
