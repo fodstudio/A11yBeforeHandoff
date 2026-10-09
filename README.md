@@ -76,6 +76,10 @@ A reusable App Platform specification template is available at `.do/app.yaml.exa
 
 ## Load the Figma plugin
 
+For a no-build local install, download the ready-to-run ZIP from `/figma-plugin`, unzip it, and import the included `manifest.json` in the Figma desktop app.
+
+To build the plugin from source:
+
 1. Run `npm install` and `npm run build` once.
 2. In the Figma desktop app, open **Plugins → Development → Import plugin from manifest…**.
 3. Select `apps/figma-plugin/manifest.json`.
@@ -83,6 +87,8 @@ A reusable App Platform specification template is available at `.do/app.yaml.exa
 5. During development, keep `npm run dev:plugin` running and reopen the plugin after edits.
 
 The MVP can inspect a selection, record manual checklist progress on the selected node, create a visual annotation beside the selection, and copy or download a handoff report. Automated checks are intentionally limited to facts that Figma exposes reliably; they are prompts, not a certification.
+
+`npm run build:plugin` rebuilds the plugin and creates `apps/web/public/downloads/a11y-handoff-figma-plugin.zip`. Production deployment regenerates this download automatically before building the website.
 
 ## Product principles
 

@@ -11,8 +11,10 @@
     "dev": "node scripts/dev.mjs",
     "dev:web": "npm run dev --workspace @a11y/web",
     "dev:plugin": "npm run dev --workspace @a11y/figma-plugin",
-    "build": "npm run build --workspaces --if-present",
-    "deploy:build": "npm run build --workspace @a11y/web && npm run build --workspace @a11y/server",
+    "build": "npm run build --workspaces --if-present && npm run package:plugin-assets",
+    "build:plugin": "npm run build --workspace @a11y/figma-plugin && npm run package:plugin-assets",
+    "package:plugin-assets": "node scripts/package-figma-plugin.mjs",
+    "deploy:build": "npm run build:plugin && npm run build --workspace @a11y/web && npm run build --workspace @a11y/server",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "start": "npm run start --workspace @a11y/server"
   },

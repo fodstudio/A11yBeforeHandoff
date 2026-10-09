@@ -8,7 +8,8 @@ const copy = {
     title1: "Make accessibility",
     title2: "intent visible.",
     lead: "Review one selection, document the decisions behind it, and carry that intent into engineering without leaving Figma.",
-    install: "Install locally",
+    install: "Download plugin ZIP",
+    installGuide: "View installation guide",
     checklist: "Explore the checklist",
     tools: "focused tools",
     network: "network access",
@@ -36,20 +37,21 @@ const copy = {
     privacyBadge2: "local plugin data",
     privacyBadge3: "user-initiated export",
     installSection: "02 — TRY THE MVP",
-    installTitle1: "Load it in",
-    installTitle2: "four steps.",
-    installCopy: "The plugin is ready for local development while the Figma Community release is prepared.",
+    installTitle1: "Install it in",
+    installTitle2: "three steps.",
+    installCopy: "Download the ready-to-run plugin. No terminal, Node.js, or build command is required.",
     steps: [
-      ["Install the project", "From the project folder, run npm install once."],
-      ["Build the plugin", "Run npm run build to create the plugin files."],
-      ["Import the manifest", "In Figma desktop, choose Plugins → Development → Import plugin from manifest."],
-      ["Start reviewing", "Select apps/figma-plugin/manifest.json, then run A11y Handoff from Development."],
+      ["Download and unzip", "Download the plugin ZIP and open the a11y-handoff-figma-plugin folder."],
+      ["Import the manifest", "In Figma desktop, choose Plugins → Development → Import plugin from manifest, then select manifest.json."],
+      ["Start reviewing", "Run A11y Handoff from Development. Figma keeps the local plugin available for future sessions."],
     ],
     path: "Manifest path",
+    download: "Download the plugin",
+    downloadMeta: "ZIP · Free · Local install",
     note: "The MVP supports the Figma design editor. It does not claim automated WCAG conformance.",
-    detailSection: "DETAILED LOCAL SETUP",
-    detailTitle: "First time? Follow every step.",
-    detailIntro: "This development install takes about five minutes and keeps the plugin on your computer. It will not publish or share anything to the Figma Community.",
+    detailSection: "FOR DEVELOPERS",
+    detailTitle: "Prefer to build from source?",
+    detailIntro: "Use this optional setup if you want to inspect or change the plugin code. Regular users can use the ZIP download above.",
     requirementsTitle: "Before you begin",
     requirements: ["Figma desktop app — local plugin development does not run in the browser app.", "Node.js 20 or newer and npm.", "This project folder downloaded or available on your computer."],
     detailedSteps: [
@@ -80,7 +82,8 @@ const copy = {
     title1: "アクセシビリティの意図を",
     title2: "見える形に。",
     lead: "Figmaを離れずに、一つの選択を確認し、判断を記録し、その意図を開発へ引き継ぎます。",
-    install: "ローカルでインストール",
+    install: "プラグインZIPをダウンロード",
+    installGuide: "インストール方法を見る",
     checklist: "チェックリストを見る",
     tools: "の機能",
     network: "ネットワークアクセス",
@@ -108,20 +111,21 @@ const copy = {
     privacyBadge2: "ローカルプラグインデータ",
     privacyBadge3: "ユーザー操作で書き出し",
     installSection: "02 — MVPを試す",
-    installTitle1: "4ステップで",
-    installTitle2: "読み込む。",
-    installCopy: "Figma Community公開の準備中も、ローカル開発版を利用できます。",
+    installTitle1: "3ステップで",
+    installTitle2: "インストール。",
+    installCopy: "実行できるプラグインをダウンロードできます。ターミナル、Node.js、ビルド作業は不要です。",
     steps: [
-      ["プロジェクトを準備", "プロジェクトフォルダでnpm installを一度実行します。"],
-      ["プラグインをビルド", "npm run buildでプラグインファイルを作成します。"],
-      ["マニフェストを読み込む", "FigmaデスクトップでPlugins → Development → Import plugin from manifestを選びます。"],
-      ["レビューを始める", "apps/figma-plugin/manifest.jsonを選び、Developmentからプラグインを実行します。"],
+      ["ダウンロードして展開", "プラグインZIPをダウンロードし、a11y-handoff-figma-pluginフォルダを開きます。"],
+      ["マニフェストを読み込む", "FigmaデスクトップでPlugins → Development → Import plugin from manifestを選び、manifest.jsonを指定します。"],
+      ["レビューを始める", "DevelopmentからA11y Handoffを実行します。次回以降もローカルプラグインとして表示されます。"],
     ],
     path: "マニフェストの場所",
+    download: "プラグインをダウンロード",
+    downloadMeta: "ZIP · 無料 · ローカルインストール",
     note: "MVPはFigmaデザインエディターに対応します。WCAG適合を自動判定するものではありません。",
-    detailSection: "詳しいローカル設定",
-    detailTitle: "初めてでも、順番に進めれば大丈夫です。",
-    detailIntro: "約5分で完了する開発用インストールです。プラグインはPC内に追加され、Figma Communityへ公開・共有されることはありません。",
+    detailSection: "開発者向け",
+    detailTitle: "ソースからビルドする場合",
+    detailIntro: "コードを確認・変更したい場合のオプションです。通常の利用は上のZIPダウンロードだけで始められます。",
     requirementsTitle: "始める前の準備",
     requirements: ["Figmaデスクトップアプリ — ブラウザ版ではローカルプラグインを開発・テストできません。", "Node.js 20以上とnpm。", "このプロジェクトフォルダがPC上にあること。"],
     detailedSteps: [
@@ -152,7 +156,8 @@ const copy = {
     title1: "접근성 의도를",
     title2: "디자인에 보이게.",
     lead: "Figma를 떠나지 않고 하나의 선택을 검토하고, 판단을 기록하고, 그 의도를 개발로 전달하세요.",
-    install: "로컬로 설치",
+    install: "플러그인 ZIP 다운로드",
+    installGuide: "설치 방법 보기",
     checklist: "체크리스트 살펴보기",
     tools: "가지 핵심 도구",
     network: "네트워크 접근",
@@ -180,20 +185,21 @@ const copy = {
     privacyBadge2: "로컬 플러그인 데이터",
     privacyBadge3: "사용자 선택으로 내보내기",
     installSection: "02 — MVP 사용하기",
-    installTitle1: "네 단계로",
-    installTitle2: "불러오세요.",
-    installCopy: "Figma Community 공개를 준비하는 동안 로컬 개발 버전을 사용할 수 있습니다.",
+    installTitle1: "세 단계로",
+    installTitle2: "설치하세요.",
+    installCopy: "바로 실행할 수 있는 플러그인을 다운로드하세요. 터미널, Node.js, 빌드 명령은 필요 없습니다.",
     steps: [
-      ["프로젝트 준비", "프로젝트 폴더에서 npm install을 한 번 실행합니다."],
-      ["플러그인 빌드", "npm run build로 플러그인 파일을 만듭니다."],
-      ["매니페스트 가져오기", "Figma 데스크톱에서 Plugins → Development → Import plugin from manifest를 선택합니다."],
-      ["검토 시작", "apps/figma-plugin/manifest.json을 선택한 뒤 Development에서 플러그인을 실행합니다."],
+      ["다운로드하고 압축 풀기", "플러그인 ZIP을 다운로드한 뒤 a11y-handoff-figma-plugin 폴더를 여세요."],
+      ["매니페스트 가져오기", "Figma 데스크톱에서 Plugins → Development → Import plugin from manifest를 선택하고 manifest.json을 지정하세요."],
+      ["검토 시작", "Development에서 A11y Handoff를 실행하세요. 다음부터도 로컬 플러그인 목록에 유지됩니다."],
     ],
     path: "매니페스트 경로",
+    download: "플러그인 다운로드",
+    downloadMeta: "ZIP · 무료 · 로컬 설치",
     note: "MVP는 Figma 디자인 에디터를 지원하며 WCAG 준수를 자동으로 인증하지 않습니다.",
-    detailSection: "상세 로컬 설치",
-    detailTitle: "처음이라면 이 순서대로 진행하세요.",
-    detailIntro: "약 5분이면 완료되는 개발용 설치입니다. 플러그인은 내 컴퓨터에만 추가되며 Figma Community에 공개되거나 공유되지 않습니다.",
+    detailSection: "개발자용",
+    detailTitle: "소스에서 직접 빌드하려면",
+    detailIntro: "플러그인 코드를 확인하거나 수정하려는 경우를 위한 선택 사항입니다. 일반 사용자는 위의 ZIP 다운로드만으로 시작할 수 있습니다.",
     requirementsTitle: "시작하기 전에",
     requirements: ["Figma 데스크톱 앱 — 브라우저 앱에서는 로컬 플러그인을 개발·테스트할 수 없습니다.", "Node.js 20 이상과 npm.", "이 프로젝트 폴더가 컴퓨터에 준비되어 있어야 합니다."],
     detailedSteps: [
@@ -233,8 +239,8 @@ export function FigmaPluginPage() {
           <h1>{c.title1}<br /><em>{c.title2}</em></h1>
           <p>{c.lead}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#install">{c.install} <span aria-hidden="true">↓</span></a>
-            <Link className="text-link" to="/checklist">{c.checklist} <span aria-hidden="true">↗</span></Link>
+            <a className="button button-primary" href="/downloads/a11y-handoff-figma-plugin.zip" download>{c.install} <span aria-hidden="true">↓</span></a>
+            <a className="text-link" href="#install">{c.installGuide} <span aria-hidden="true">↘</span></a>
           </div>
           <div className="plugin-proof" aria-label="Plugin highlights">
             <span><strong>4</strong> {c.tools}</span>
@@ -281,7 +287,11 @@ export function FigmaPluginPage() {
       <section className="page-width plugin-install" id="install">
         <div className="plugin-install-heading"><p className="section-number">{c.installSection}</p><h2>{c.installTitle1}<br /><em>{c.installTitle2}</em></h2><p>{c.installCopy}</p></div>
         <ol>{c.steps.map(([title, description], index) => <li key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{description}</p></div></li>)}</ol>
-        <div className="manifest-path"><span>{c.path}</span><code>apps/figma-plugin/manifest.json</code></div>
+        <div className="plugin-download-card">
+          <div><strong>{c.download}</strong><span>{c.downloadMeta}</span></div>
+          <a className="button button-primary" href="/downloads/a11y-handoff-figma-plugin.zip" download>{c.install} <span aria-hidden="true">↓</span></a>
+        </div>
+        <div className="manifest-path"><span>{c.path}</span><code>a11y-handoff-figma-plugin/manifest.json</code></div>
         <p className="plugin-note"><span aria-hidden="true">✦</span>{c.note}</p>
 
         <section className="plugin-install-detail" aria-labelledby="plugin-install-detail-title">
