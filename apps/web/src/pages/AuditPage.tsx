@@ -1,5 +1,6 @@
 import { useMemo, useState, type CSSProperties, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { wcagUnderstandingUrl } from "@a11y/content";
 import { usePreferences } from "../preferences";
 
 type Status = "pass" | "warning" | "fail" | "manual";
@@ -109,6 +110,27 @@ const auditGuideCopy = {
 
 const statusOrder: Record<Status, number> = { fail: 0, warning: 1, manual: 2, pass: 3 };
 
+function WcagReferenceLinks({ criteria }: { criteria: string[] }) {
+  return (
+    <span className="wcag-reference-links">
+      WCAG{" "}
+      {criteria.map((criterion, index) => (
+        <span className="wcag-reference" key={criterion}>
+          {index > 0 && <span className="wcag-separator" aria-hidden="true"> · </span>}
+          <a
+            href={wcagUnderstandingUrl(criterion)}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`WCAG ${criterion} official explanation`}
+          >
+            {criterion}<span className="external-mark" aria-hidden="true">↗</span>
+          </a>
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export function AuditPage({ embedded = false }: { embedded?: boolean }) {
   const { locale } = usePreferences();
   const c = copy[locale];
@@ -214,7 +236,7 @@ export function AuditPage({ embedded = false }: { embedded?: boolean }) {
         <div className="report-toolbar"><div><p className="section-number">{c.report}</p><h2>{report.summary.total} {c.all}</h2></div><div><button type="button" className={issuesFirst ? "active" : ""} onClick={() => setIssuesFirst(true)}>{c.issues}</button><button type="button" className={!issuesFirst ? "active" : ""} onClick={() => setIssuesFirst(false)}>{c.all}</button><button type="button" onClick={exportReport}>{c.export} ↓</button></div></div>
         <div className="report-list">{results.map((result) => <article className={`report-item report-${result.status}`} key={result.id}>
           <span className={`result-icon status-${result.status}`} aria-hidden="true">{result.status === "pass" ? "✓" : result.status === "fail" ? "×" : result.status === "warning" ? "!" : "?"}</span>
-          <div><div className="result-topline"><span>{c.categories[result.category]}</span>{result.wcag && <span>WCAG {result.wcag.join(" · ")}</span>}</div><h3>{locale === "en" ? result.title : mobileIssueTitle[locale][result.id] || issueTitle[locale][result.id] || result.title}</h3><p>{result.detail}</p>{result.examples?.length ? <details><summary>Examples ({result.examples.length})</summary><ul>{result.examples.map((example) => <li key={example}><code>{example}</code></li>)}</ul></details> : null}</div>
+          <div><div className="result-topline"><span>{c.categories[result.category]}</span>{result.wcag && <WcagReferenceLinks criteria={result.wcag} />}</div><h3>{locale === "en" ? result.title : mobileIssueTitle[locale][result.id] || issueTitle[locale][result.id] || result.title}</h3><p>{result.detail}</p>{result.examples?.length ? <details><summary>Examples ({result.examples.length})</summary><ul>{result.examples.map((example) => <li key={example}><code>{example}</code></li>)}</ul></details> : null}</div>
         </article>)}</div>
         <aside className="manual-note"><span aria-hidden="true">✦</span><p>{c.manualNote}</p></aside>
         <button className="button button-dark center-button" type="button" onClick={() => { setReport(null); setUrl(""); window.scrollTo({ top: 0, behavior: "smooth" }); }}>{c.again}</button>

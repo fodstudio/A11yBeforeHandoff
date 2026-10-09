@@ -23,6 +23,7 @@ export interface ChecklistItem {
 export type WcagLevel = "A" | "AA" | "AAA";
 
 export const wcagCriteria: Record<string, { slug: string; level: WcagLevel }> = {
+  "1.1.1": { slug: "non-text-content", level: "A" },
   "1.2.1": { slug: "audio-only-and-video-only-prerecorded", level: "A" },
   "1.2.2": { slug: "captions-prerecorded", level: "A" },
   "1.2.3": { slug: "audio-description-or-media-alternative-prerecorded", level: "A" },
@@ -35,9 +36,12 @@ export const wcagCriteria: Record<string, { slug: string; level: WcagLevel }> = 
   "1.4.6": { slug: "contrast-enhanced", level: "AAA" },
   "1.4.10": { slug: "reflow", level: "AA" },
   "1.4.11": { slug: "non-text-contrast", level: "AA" },
+  "2.1.1": { slug: "keyboard", level: "A" },
   "2.2.1": { slug: "timing-adjustable", level: "A" },
   "2.2.2": { slug: "pause-stop-hide", level: "A" },
   "2.3.3": { slug: "animation-from-interactions", level: "AAA" },
+  "2.4.1": { slug: "bypass-blocks", level: "A" },
+  "2.4.2": { slug: "page-titled", level: "A" },
   "2.4.3": { slug: "focus-order", level: "A" },
   "2.4.4": { slug: "link-purpose-in-context", level: "A" },
   "2.4.6": { slug: "headings-and-labels", level: "AA" },
@@ -49,9 +53,14 @@ export const wcagCriteria: Record<string, { slug: string; level: WcagLevel }> = 
   "2.5.5": { slug: "target-size-enhanced", level: "AAA" },
   "2.5.7": { slug: "dragging-movements", level: "AA" },
   "2.5.8": { slug: "target-size-minimum", level: "AA" },
+  "3.1.1": { slug: "language-of-page", level: "A" },
   "3.1.2": { slug: "language-of-parts", level: "AA" },
+  "3.1.5": { slug: "reading-level", level: "AAA" },
   "3.3.1": { slug: "error-identification", level: "A" },
+  "3.3.2": { slug: "labels-or-instructions", level: "A" },
   "3.3.3": { slug: "error-suggestion", level: "AA" },
+  "3.3.5": { slug: "help", level: "AAA" },
+  "4.1.1": { slug: "parsing", level: "A" },
   "4.1.2": { slug: "name-role-value", level: "A" },
   "4.1.3": { slug: "status-messages", level: "AA" }
 };
