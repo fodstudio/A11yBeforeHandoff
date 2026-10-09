@@ -76,7 +76,7 @@ export function App() {
         <div>
           <Mark />
           <p>{t("footer.line1")}</p>
-          <button className="footer-contact" type="button" onClick={() => setContactOpen(true)}>hello@a11yhandoff.com</button>
+          <button className="footer-contact" type="button" onClick={() => setContactOpen(true)}>{t("footer.contact")} <span aria-hidden="true">↗</span></button>
         </div>
         <div className="footer-note">
           <p>{t("footer.line2")}</p>
