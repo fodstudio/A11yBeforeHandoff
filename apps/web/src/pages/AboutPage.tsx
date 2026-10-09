@@ -33,6 +33,13 @@ export function AboutPage() {
         <div><p className="section-number">{t("privacy.eyebrow")}</p><h2>{t("privacy.title")}</h2></div>
         <div className="prose"><p>{t("privacy.files")}</p><p>{t("privacy.progress")}</p></div>
       </section>
+      <section className="about-grid contact-grid">
+        <div><p className="section-number">{t("contact.eyebrow")}</p><h2>{t("contact.title")}</h2></div>
+        <div className="prose">
+          <p>{t("contact.copy")}</p>
+          <a className="contact-email" href="mailto:hello@a11yhandoff.com">hello@a11yhandoff.com <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
       <section className="cta-section"><p className="section-number">{t("about.ready")}</p><h2>{t("about.cta1")}<br />{t("about.cta2")}</h2><Link className="button button-primary" to="/checklist">{t("about.start")} <span aria-hidden="true">→</span></Link></section>
     </div>
   );
