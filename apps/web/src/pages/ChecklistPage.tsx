@@ -99,14 +99,16 @@ export function ChecklistPage() {
         <div className="standards-filter-group">
           <fieldset className="platform-filter">
             <legend>{t("check.platform")}</legend>
-            <div className="filter-chips">{(Object.keys(platformLabels) as Platform[]).map((option) => <button type="button" className={platform === option ? "active" : ""} aria-pressed={platform === option} onClick={() => selectPlatform(option)} key={option}>{platformLabels[option]}</button>)}</div>
+            <select value={platform} onChange={(event) => selectPlatform(event.target.value as Platform)} aria-label={t("check.platform")}>
+              {(Object.keys(platformLabels) as Platform[]).map((option) => <option value={option} key={option}>{platformLabels[option]}</option>)}
+            </select>
           </fieldset>
           <fieldset className="target-filter">
             <legend>{t("check.level")}</legend>
-            <div className="filter-chips">
-              <button type="button" className={targetLevel === "AA" ? "active" : ""} aria-pressed={targetLevel === "AA"} onClick={() => selectLevel("AA")}>{t("check.levelAA")}</button>
-              <button type="button" className={targetLevel === "AAA" ? "active" : ""} aria-pressed={targetLevel === "AAA"} onClick={() => selectLevel("AAA")}>{t("check.levelAAA")}</button>
-            </div>
+            <select value={targetLevel} onChange={(event) => selectLevel(event.target.value as TargetLevel)} aria-label={t("check.level")}>
+              <option value="AA">{t("check.levelAA")}</option>
+              <option value="AAA">{t("check.levelAAA")}</option>
+            </select>
           </fieldset>
         </div>
         <fieldset className="effort-filter">
@@ -119,10 +121,10 @@ export function ChecklistPage() {
         </fieldset>
         <fieldset className="category-filter">
           <legend>{t("check.category")}</legend>
-          <div className="filter-chips">
-            <button type="button" className={category === "all" ? "active" : ""} onClick={() => selectCategory("all")}>{t("check.all")}</button>
-            {localizedCategories.map((item) => <button type="button" className={category === item.id ? "active" : ""} onClick={() => selectCategory(item.id)} key={item.id}>{item.shortLabel}</button>)}
-          </div>
+          <select value={category} onChange={(event) => selectCategory(event.target.value as CategoryId | "all")} aria-label={t("check.category")}>
+            <option value="all">{t("check.all")}</option>
+            {localizedCategories.map((item) => <option value={item.id} key={item.id}>{item.shortLabel}</option>)}
+          </select>
         </fieldset>
       </section>
 
