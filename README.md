@@ -63,9 +63,14 @@ HTTP port: 8080
 Health check path: /api/health
 Instance: 1 vCPU / 512 MiB fixed ($5/month)
 Environment variable: NODE_ENV=production
+Secret environment variable: RESEND_API_KEY=your Resend API key
+Environment variable: CONTACT_FROM_EMAIL=A11y Handoff <contact@mail.a11yhandoff.com>
+Environment variable: CONTACT_TO_EMAIL=a11yhandoff@gmail.com
 ```
 
 DigitalOcean installs dependencies before running the build command and automatically provides `PORT=8080` when the HTTP port is set to 8080. Use the Singapore region for a Japan-focused launch, then enable deploy-on-push for the repository's `main` branch.
+
+The contact form posts to `/api/contact` and sends through Resend without opening the visitor's email app. Verify `mail.a11yhandoff.com` in Resend, add the DNS records it provides, and save `RESEND_API_KEY` as an encrypted DigitalOcean App Platform environment variable. The endpoint validates field lengths, uses a honeypot, and limits each IP address to five submissions per hour.
 
 A reusable App Platform specification template is available at `.do/app.yaml.example`. Replace the GitHub repository placeholder before uploading it or using it with `doctl`.
 

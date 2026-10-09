@@ -9,7 +9,11 @@ const app = express();
 const port = Number(process.env.PORT || 8787);
 const host = process.env.HOST || "0.0.0.0";
 const MAX_BYTES = 2_000_000;
+const CONTACT_LIMIT = 5;
+const CONTACT_WINDOW_MS = 60 * 60 * 1000;
+const contactAttempts = new Map<string, { count: number; resetsAt: number }>();
 app.use(express.json({ limit: "16kb" }));
+app.set("trust proxy", 1);
 
 function isPrivateAddress(address: string) {
   const normalized = address.toLowerCase();
@@ -60,6 +64,51 @@ async function fetchPage(raw: string) {
 }
 
 app.get("/api/health", (_request, response) => response.json({ ok: true }));
+app.post("/api/contact", async (request, response) => {
+  const name = typeof request.body?.name === "string" ? request.body.name.trim() : "";
+  const email = typeof request.body?.email === "string" ? request.body.email.trim() : "";
+  const message = typeof request.body?.message === "string" ? request.body.message.trim() : "";
+  const website = typeof request.body?.website === "string" ? request.body.website.trim() : "";
+
+  // Honeypot fields are accepted silently so automated submissions receive no useful signal.
+  if (website) return response.json({ ok: true });
+  if (!name || name.length > 100 || !email || email.length > 254 || !/^\S+@\S+\.\S+$/.test(email) || !message || message.length > 5_000) {
+    return response.status(400).json({ error: "Check the form fields and try again." });
+  }
+
+  const rateLimitKey = request.ip || request.socket.remoteAddress || "unknown";
+  const now = Date.now();
+  const previous = contactAttempts.get(rateLimitKey);
+  const attempt = !previous || previous.resetsAt <= now ? { count: 1, resetsAt: now + CONTACT_WINDOW_MS } : { ...previous, count: previous.count + 1 };
+  contactAttempts.set(rateLimitKey, attempt);
+  if (attempt.count > CONTACT_LIMIT) return response.status(429).json({ error: "Too many messages. Try again later." });
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return response.status(503).json({ error: "Email delivery is not configured." });
+
+  try {
+    const emailResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { authorization: `Bearer ${apiKey}`, "content-type": "application/json" },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL || "A11y Handoff <contact@mail.a11yhandoff.com>",
+        to: [process.env.CONTACT_TO_EMAIL || "a11yhandoff@gmail.com"],
+        reply_to: email,
+        subject: `A11y Handoff inquiry from ${name}`,
+        text: `Name: ${name}\nReply email: ${email}\n\n${message}`
+      }),
+      signal: AbortSignal.timeout(10_000)
+    });
+    if (!emailResponse.ok) {
+      console.error("Contact email delivery failed", emailResponse.status, (await emailResponse.text()).slice(0, 500));
+      return response.status(502).json({ error: "The message could not be delivered." });
+    }
+    return response.json({ ok: true });
+  } catch (error) {
+    console.error("Contact email delivery failed", error);
+    return response.status(502).json({ error: "The message could not be delivered." });
+  }
+});
 app.post("/api/analyze", async (request, response) => {
   const raw = typeof request.body?.url === "string" ? request.body.url.trim() : "";
   const requestedPlatform = typeof request.body?.platform === "string" ? request.body.platform : "web";
