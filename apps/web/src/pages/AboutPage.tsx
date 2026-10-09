@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { usePreferences } from "../preferences";
 
-export function AboutPage() {
+export function AboutPage({ onContactClick }: { onContactClick: () => void }) {
   const { t } = usePreferences();
   return (
     <div className="page-width page-content about-page">
@@ -37,7 +37,7 @@ export function AboutPage() {
         <div><p className="section-number">{t("contact.eyebrow")}</p><h2>{t("contact.title")}</h2></div>
         <div className="prose">
           <p>{t("contact.copy")}</p>
-          <a className="contact-email" href="mailto:hello@a11yhandoff.com">hello@a11yhandoff.com <span aria-hidden="true">↗</span></a>
+          <button className="contact-email" type="button" onClick={onContactClick}>hello@a11yhandoff.com <span aria-hidden="true">↗</span></button>
         </div>
       </section>
       <section className="cta-section"><p className="section-number">{t("about.ready")}</p><h2>{t("about.cta1")}<br />{t("about.cta2")}</h2><Link className="button button-primary" to="/checklist">{t("about.start")} <span aria-hidden="true">→</span></Link></section>

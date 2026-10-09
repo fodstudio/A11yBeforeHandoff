@@ -1,5 +1,5 @@
 import { NavLink, Route, Routes, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { HomePage } from "./pages/HomePage";
 import { ChecklistPage } from "./pages/ChecklistPage";
 import { ComponentsPage } from "./pages/ComponentsPage";
@@ -10,6 +10,7 @@ import { AuditPage } from "./pages/AuditPage";
 import { FigmaPluginPage } from "./pages/FigmaPluginPage";
 import { usePreferences } from "./preferences";
 import { SeoManager } from "./SeoManager";
+import { ContactDialog } from "./components/ContactDialog";
 import type { Locale } from "@a11y/content";
 
 function ScrollToTop() {
@@ -36,6 +37,7 @@ function Mark() {
 
 export function App() {
   const { locale, theme, setLocale, toggleTheme, t } = usePreferences();
+  const [contactOpen, setContactOpen] = useState(false);
   return (
     <div className="site-shell">
       <ScrollToTop />
@@ -66,7 +68,7 @@ export function App() {
           <Route path="/components" element={<ComponentsPage />} />
           <Route path="/components/:slug" element={<ComponentPage />} />
           <Route path="/figma-plugin" element={<FigmaPluginPage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/about" element={<AboutPage onContactClick={() => setContactOpen(true)} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
@@ -74,6 +76,7 @@ export function App() {
         <div>
           <Mark />
           <p>{t("footer.line1")}</p>
+          <button className="footer-contact" type="button" onClick={() => setContactOpen(true)}>hello@a11yhandoff.com</button>
         </div>
         <div className="footer-note">
           <p>{t("footer.line2")}</p>
@@ -81,6 +84,7 @@ export function App() {
           <p className="footer-copyright">{t("footer.copyright")}</p>
         </div>
       </footer>
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
 }
