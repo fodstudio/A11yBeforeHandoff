@@ -5,7 +5,13 @@ export function AboutPage({ onContactClick }: { onContactClick: () => void }) {
   const { t } = usePreferences();
   return (
     <div className="page-width page-content about-page">
-      <header className="page-hero about-hero"><p className="eyebrow"><span /> {t("about.eyebrow")}</p><h1>{t("about.title1")}<br /><em>{t("about.title2")}</em></h1><p>{t("about.lead")}</p></header>
+      <header className="page-hero about-hero">
+        <div>
+          <p className="eyebrow"><span /> {t("about.eyebrow")}</p>
+          <h1>{t("about.title1")}<br /><em>{t("about.title2")}</em></h1>
+        </div>
+        <p>{t("about.lead")}</p>
+      </header>
       <section className="about-grid">
         <div><p className="section-number">{t("about.position")}</p><h2>{t("about.teamHeading")}</h2></div>
         <div className="prose"><p>{t("about.teamP1")}</p><p>{t("about.p2")}</p></div>

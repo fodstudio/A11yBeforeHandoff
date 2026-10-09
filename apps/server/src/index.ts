@@ -64,6 +64,7 @@ async function fetchPage(raw: string) {
 }
 
 app.get("/api/health", (_request, response) => response.json({ ok: true }));
+app.get("/api/contact/status", (_request, response) => response.json({ configured: Boolean(process.env.RESEND_API_KEY) }));
 app.post("/api/contact", async (request, response) => {
   const name = typeof request.body?.name === "string" ? request.body.name.trim() : "";
   const email = typeof request.body?.email === "string" ? request.body.email.trim() : "";

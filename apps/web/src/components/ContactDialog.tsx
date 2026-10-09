@@ -13,6 +13,7 @@ export function ContactDialog({ open, onClose }: ContactDialogProps) {
   const nameRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [deliveryMode, setDeliveryMode] = useState<"checking" | "direct" | "mailto">("checking");
 
   useEffect(() => {
     if (!open) return;
@@ -20,6 +21,11 @@ export function ContactDialog({ open, onClose }: ContactDialogProps) {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     setStatus("idle");
+    setDeliveryMode("checking");
+    fetch("/api/contact/status")
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((data: { configured?: boolean }) => setDeliveryMode(data.configured ? "direct" : "mailto"))
+      .catch(() => setDeliveryMode("mailto"));
     nameRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -55,6 +61,12 @@ export function ContactDialog({ open, onClose }: ContactDialogProps) {
     const email = String(data.get("email") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
     const website = String(data.get("website") ?? "").trim();
+    if (deliveryMode !== "direct") {
+      const subject = `A11y Handoff — ${name}`;
+      const body = `${t("contact.formName")}: ${name}\n${t("contact.formEmail")}: ${email}\n\n${message}`;
+      window.location.href = `mailto:hello@a11yhandoff.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return;
+    }
     setStatus("sending");
     try {
       const response = await fetch("/api/contact", {
@@ -92,7 +104,7 @@ export function ContactDialog({ open, onClose }: ContactDialogProps) {
             <label className="contact-honeypot" aria-hidden="true">Website<input name="website" autoComplete="off" tabIndex={-1} /></label>
             {status === "error" && <p className="contact-form-error" role="alert">{t("contact.formError")}</p>}
             <button className="button button-primary" type="submit" disabled={status === "sending"}>{status === "sending" ? t("contact.formSending") : t("contact.formSubmit")} <span aria-hidden="true">→</span></button>
-            <p className="contact-form-note">{t("contact.formNote")}</p>
+            <p className="contact-form-note">{deliveryMode === "direct" ? t("contact.formNote") : t("contact.formMailNote")}</p>
           </form>
         )}
       </section>
