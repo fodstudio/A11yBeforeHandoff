@@ -1,5 +1,6 @@
 import express from "express";
 import { lookup } from "node:dns/promises";
+import { existsSync, readFileSync } from "node:fs";
 import { isIP } from "node:net";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -130,6 +131,40 @@ app.post("/api/analyze", async (request, response) => {
 });
 
 const webDist = resolve(dirname(fileURLToPath(import.meta.url)), "../../web/dist");
-app.use(express.static(webDist));
-app.get("/{*path}", (_request, response) => response.sendFile(resolve(webDist, "index.html")));
+const prerenderDist = resolve(webDist, "prerender");
+const routeManifestPath = resolve(prerenderDist, "routes.json");
+const routeManifest = existsSync(routeManifestPath)
+  ? JSON.parse(readFileSync(routeManifestPath, "utf8")) as { routes: Record<string, string> }
+  : { routes: {} };
+
+function normalizePath(pathname: string) {
+  if (pathname === "/") return pathname;
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+function querySuffix(originalUrl: string) {
+  const queryIndex = originalUrl.indexOf("?");
+  return queryIndex >= 0 ? originalUrl.slice(queryIndex) : "";
+}
+
+app.use(express.static(webDist, { index: false, redirect: false }));
+app.get("/{*path}", (request, response) => {
+  const pathname = normalizePath(request.path);
+  const query = querySuffix(request.originalUrl);
+
+  if (request.path !== pathname) return response.redirect(308, `${pathname}${query}`);
+  if (pathname === "/") return response.redirect(308, `/en${query}`);
+
+  const hasLocale = /^\/(en|ja|ko)(?:\/|$)/.test(pathname);
+  if (!hasLocale) {
+    const englishPath = `/en${pathname}`;
+    if (routeManifest.routes[englishPath]) return response.redirect(308, `${englishPath}${query}`);
+  }
+
+  const routeFile = routeManifest.routes[pathname];
+  if (routeFile) return response.sendFile(resolve(prerenderDist, routeFile));
+
+  const locale = pathname.match(/^\/(en|ja|ko)(?:\/|$)/)?.[1] || "en";
+  return response.status(404).sendFile(resolve(prerenderDist, `${locale}/404.html`));
+});
 app.listen(port, host, () => console.log(`Accessibility analysis API ready on http://${host}:${port}`));

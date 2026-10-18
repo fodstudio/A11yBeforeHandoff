@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && tsx --tsconfig tsconfig.app.json scripts/prerender.tsx",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false"
   },
@@ -21,6 +21,7 @@
     "@types/node": "^22.13.4",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "tsx": "^4.19.3",
     "typescript": "^5.7.3"
   }
 }

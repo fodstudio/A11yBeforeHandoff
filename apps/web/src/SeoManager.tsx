@@ -2,12 +2,15 @@ import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { componentGuides, localizeComponentGuide, type Locale } from "@a11y/content";
 import { usePreferences } from "./preferences";
+import { defaultLocale, localizedPath, localizedUrl, splitLocalizedPath, supportedLocales } from "./routing";
 
 const siteName = "A11y Handoff";
-const siteUrl = (import.meta.env.VITE_SITE_URL || "https://a11yhandoff.com").replace(/\/$/, "");
+const configuredSiteUrl = import.meta.env?.VITE_SITE_URL || (typeof process !== "undefined" ? process.env.VITE_SITE_URL : undefined);
+export const siteUrl = (configuredSiteUrl || "https://a11yhandoff.com").replace(/\/$/, "");
 
 type SeoCopy = { title: string; description: string };
 type StaticRoute = "/" | "/audit" | "/checklist" | "/components" | "/figma-plugin" | "/about";
+export type SeoPageData = SeoCopy & { locale: Locale; basePath: string; index: boolean; canonical: string };
 
 const routeCopy: Record<Locale, Record<StaticRoute, SeoCopy>> = {
   en: {
@@ -66,27 +69,68 @@ function setCanonical(url: string) {
   element.href = url;
 }
 
+function setAlternates(basePath: string) {
+  document.head.querySelectorAll('link[data-a11y-alternate="true"]').forEach((element) => element.remove());
+  for (const alternateLocale of supportedLocales) {
+    const element = document.createElement("link");
+    element.rel = "alternate";
+    element.hreflang = alternateLocale;
+    element.href = localizedUrl(siteUrl, alternateLocale, basePath);
+    element.dataset.a11yAlternate = "true";
+    document.head.appendChild(element);
+  }
+  const fallback = document.createElement("link");
+  fallback.rel = "alternate";
+  fallback.hreflang = "x-default";
+  fallback.href = localizedUrl(siteUrl, defaultLocale, basePath);
+  fallback.dataset.a11yAlternate = "true";
+  document.head.appendChild(fallback);
+}
+
+export function getSeoPageData(pathname: string, preferredLocale: Locale = defaultLocale): SeoPageData {
+  const localized = splitLocalizedPath(pathname);
+  const locale = localized.locale || preferredLocale;
+  const basePath = localized.basePath;
+  const staticCopy = routeCopy[locale][basePath as StaticRoute];
+  if (staticCopy) {
+    return { ...staticCopy, locale, basePath, index: true, canonical: localizedUrl(siteUrl, locale, basePath) };
+  }
+
+  const slug = basePath.startsWith("/components/") ? basePath.slice("/components/".length) : "";
+  const guide = componentGuides.find((item) => item.slug === slug);
+  if (guide) {
+    const localizedGuide = localizeComponentGuide(guide, locale);
+    return {
+      title: `${localizedGuide.name} ${componentTitle[locale]}`,
+      description: `${localizedGuide.summary} ${componentDescription[locale]}`,
+      locale,
+      basePath,
+      index: true,
+      canonical: localizedUrl(siteUrl, locale, basePath)
+    };
+  }
+
+  return {
+    title: "Page not found",
+    description: "This page could not be found.",
+    locale,
+    basePath,
+    index: false,
+    canonical: `${siteUrl}${localizedPath(locale, basePath)}`
+  };
+}
+
 export function SeoManager() {
   const { pathname } = useLocation();
   const { locale } = usePreferences();
-  const seo = useMemo(() => {
-    const staticCopy = routeCopy[locale][pathname as StaticRoute];
-    if (staticCopy) return { ...staticCopy, index: true };
-
-    const slug = pathname.startsWith("/components/") ? pathname.slice("/components/".length) : "";
-    const guide = componentGuides.find((item) => item.slug === slug);
-    if (guide) {
-      const localized = localizeComponentGuide(guide, locale);
-      return { title: `${localized.name} ${componentTitle[locale]}`, description: `${localized.summary} ${componentDescription[locale]}`, index: true };
-    }
-    return { title: "Page not found", description: "This page could not be found.", index: false };
-  }, [locale, pathname]);
+  const seo = useMemo(() => getSeoPageData(pathname, locale), [locale, pathname]);
 
   useEffect(() => {
     const pageTitle = `${seo.title} | ${siteName}`;
-    const canonical = `${siteUrl}${pathname === "/" ? "/" : pathname}`;
+    const canonical = seo.canonical;
     document.title = pageTitle;
     setCanonical(canonical);
+    setAlternates(seo.basePath);
     setMeta('meta[name="description"]', { name: "description", content: seo.description });
     setMeta('meta[name="robots"]', { name: "robots", content: seo.index ? "index, follow, max-image-preview:large, max-snippet:-1" : "noindex, nofollow" });
     setMeta('meta[property="og:title"]', { property: "og:title", content: pageTitle });
@@ -109,7 +153,7 @@ export function SeoManager() {
       name: seo.title,
       description: seo.description,
       url: canonical,
-      inLanguage: locale,
+      inLanguage: seo.locale,
       isPartOf: { "@id": `${siteUrl}/#website` }
     });
   }, [locale, pathname, seo]);

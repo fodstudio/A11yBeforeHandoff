@@ -12,6 +12,7 @@ interface ProgressContextValue {
 const ProgressContext = createContext<ProgressContextValue | null>(null);
 
 function readStoredProgress(): Set<string> {
+  if (typeof window === "undefined") return new Set();
   try {
     const value = window.localStorage.getItem(STORAGE_KEY);
     return value ? new Set(JSON.parse(value) as string[]) : new Set();
@@ -24,6 +25,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const [checked, setChecked] = useState<Set<string>>(readStoredProgress);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...checked]));
   }, [checked]);
 
