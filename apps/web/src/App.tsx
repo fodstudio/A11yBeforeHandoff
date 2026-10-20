@@ -105,6 +105,7 @@ export function App() {
         <div className="footer-note">
           <p>{t("footer.line2")}</p>
           <p>{t("footer.line3")}</p>
+          <p>{t("footer.analytics")}</p>
           <p className="footer-copyright">{t("footer.copyright")}</p>
         </div>
       </footer>
