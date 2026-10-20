@@ -60,7 +60,6 @@ export function App() {
           <NavLink to={localizedPath(locale, "/audit")}>{t("nav.audit")}</NavLink>
           <NavLink to={localizedPath(locale, "/checklist")}>{t("nav.checklist")}</NavLink>
           <NavLink to={localizedPath(locale, "/components")}>{t("nav.components")}</NavLink>
-          <NavLink to={localizedPath(locale, "/i18n")}>{t("nav.i18n")}<span className="nav-new">NEW</span></NavLink>
           <NavLink to={localizedPath(locale, "/figma-plugin")}>{t("nav.plugin")}<span className="nav-new">NEW</span></NavLink>
           <NavLink to={localizedPath(locale, "/about")}>{t("nav.about")}</NavLink>
         </nav>
@@ -98,7 +97,10 @@ export function App() {
         <div>
           <Mark />
           <p>{t("footer.line1")}</p>
-          <button className="footer-contact" type="button" onClick={() => setContactOpen(true)}>{t("footer.contact")} <span aria-hidden="true">↗</span></button>
+          <div className="footer-actions">
+            <button className="footer-contact" type="button" onClick={() => setContactOpen(true)}>{t("footer.contact")} <span aria-hidden="true">↗</span></button>
+            <NavLink className="footer-contact footer-preview-link" to={localizedPath(locale, "/i18n")}>{t("footer.i18n")} <span aria-hidden="true">↗</span></NavLink>
+          </div>
         </div>
         <div className="footer-note">
           <p>{t("footer.line2")}</p>

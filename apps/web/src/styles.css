@@ -207,6 +207,8 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 500; }
 .footer-contact { display: block; margin-top: 13px; padding: 0 0 3px; border: 0; border-bottom: 1px solid var(--ink); color: var(--ink); background: transparent; font: 600 13px var(--sans); cursor: pointer; }
 .footer-contact:hover { border-color: var(--violet); color: var(--violet); }
 .footer-contact:focus-visible { outline: 3px solid var(--violet); outline-offset: 5px; }
+.footer-actions { display: flex; align-items: center; gap: 18px; }
+.footer-preview-link { color: var(--muted); text-decoration: none; }
 .footer-note { max-width: 560px; text-align: right; }
 .site-footer .footer-copyright { margin-top: 24px; font: 10px/1.6 var(--mono); }
 .footer-note { text-align: right; }
