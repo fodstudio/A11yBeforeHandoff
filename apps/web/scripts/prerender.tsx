@@ -31,6 +31,7 @@ const baseRoutes = [
   "/components",
   ...componentGuides.map((guide) => `/components/${guide.slug}`),
   "/figma-plugin",
+  "/i18n",
   "/about"
 ];
 

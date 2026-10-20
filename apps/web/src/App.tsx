@@ -8,6 +8,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { AuditPage } from "./pages/AuditPage";
 import { FigmaPluginPage } from "./pages/FigmaPluginPage";
+import { I18nPage } from "./pages/I18nPage";
 import { usePreferences } from "./preferences";
 import { SeoManager } from "./SeoManager";
 import { ContactDialog } from "./components/ContactDialog";
@@ -59,6 +60,7 @@ export function App() {
           <NavLink to={localizedPath(locale, "/audit")}>{t("nav.audit")}</NavLink>
           <NavLink to={localizedPath(locale, "/checklist")}>{t("nav.checklist")}</NavLink>
           <NavLink to={localizedPath(locale, "/components")}>{t("nav.components")}</NavLink>
+          <NavLink to={localizedPath(locale, "/i18n")}>{t("nav.i18n")}<span className="nav-new">NEW</span></NavLink>
           <NavLink to={localizedPath(locale, "/figma-plugin")}>{t("nav.plugin")}<span className="nav-new">NEW</span></NavLink>
           <NavLink to={localizedPath(locale, "/about")}>{t("nav.about")}</NavLink>
         </nav>
@@ -77,6 +79,7 @@ export function App() {
               <Route path={`/${routeLocale}/components`} element={<ComponentsPage />} />
               <Route path={`/${routeLocale}/components/:slug`} element={<ComponentPage />} />
               <Route path={`/${routeLocale}/figma-plugin`} element={<FigmaPluginPage />} />
+              <Route path={`/${routeLocale}/i18n`} element={<I18nPage />} />
               <Route path={`/${routeLocale}/about`} element={<AboutPage onContactClick={() => setContactOpen(true)} />} />
             </Route>
           ))}
@@ -86,6 +89,7 @@ export function App() {
           <Route path="/components" element={<LegacyRouteRedirect />} />
           <Route path="/components/:slug" element={<LegacyRouteRedirect />} />
           <Route path="/figma-plugin" element={<LegacyRouteRedirect />} />
+          <Route path="/i18n" element={<LegacyRouteRedirect />} />
           <Route path="/about" element={<LegacyRouteRedirect />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

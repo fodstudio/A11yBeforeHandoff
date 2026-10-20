@@ -43,7 +43,7 @@ const copy = {
     steps: [
       ["Download and unzip", "Download the plugin ZIP and open the a11y-handoff-figma-plugin folder."],
       ["Import the manifest", "In Figma desktop, choose Plugins → Development → Import plugin from manifest, then select manifest.json."],
-      ["Start reviewing", "Run A11y Handoff from Development. Figma keeps the local plugin available for future sessions."],
+      ["Start reviewing", "Run A11y Checklist from Development. Figma keeps the local plugin available for future sessions."],
     ],
     path: "Manifest path",
     download: "Download the plugin",
@@ -60,7 +60,7 @@ const copy = {
       ["Build the plugin", "Create the JavaScript and interface files that Figma can run.", "npm run build"],
       ["Open a Figma Design file", "Use the latest Figma desktop app and open any Figma Design file. Select a layer if you want to test the audit immediately.", ""],
       ["Import the manifest", "Right-click the canvas, then choose Plugins → Development → Import plugin from manifest. Select the exact file shown below.", "apps/figma-plugin/manifest.json"],
-      ["Run A11y Handoff", "Open the Actions menu, find the plugin under Development, and run it. Figma keeps the local plugin available for future sessions.", ""],
+      ["Run A11y Checklist", "Open the Actions menu, find the plugin under Development, and run it. Figma keeps the local plugin available for future sessions.", ""],
     ],
     rebuildTitle: "After changing the code",
     rebuildCopy: "Build again, then close and reopen the plugin in Figma. You do not need to import the manifest again.",
@@ -117,7 +117,7 @@ const copy = {
     steps: [
       ["ダウンロードして展開", "プラグインZIPをダウンロードし、a11y-handoff-figma-pluginフォルダを開きます。"],
       ["マニフェストを読み込む", "FigmaデスクトップでPlugins → Development → Import plugin from manifestを選び、manifest.jsonを指定します。"],
-      ["レビューを始める", "DevelopmentからA11y Handoffを実行します。次回以降もローカルプラグインとして表示されます。"],
+      ["レビューを始める", "DevelopmentからA11y Checklistを実行します。次回以降もローカルプラグインとして表示されます。"],
     ],
     path: "マニフェストの場所",
     download: "プラグインをダウンロード",
@@ -134,7 +134,7 @@ const copy = {
       ["プラグインをビルド", "Figmaで実行できるJavaScriptと画面ファイルを作成します。", "npm run build"],
       ["Figma Designファイルを開く", "最新版のFigmaデスクトップアプリで任意のDesignファイルを開きます。すぐ試すならレイヤーを一つ選択します。", ""],
       ["マニフェストを読み込む", "キャンバスを右クリックし、Plugins → Development → Import plugin from manifestを選び、下記ファイルを指定します。", "apps/figma-plugin/manifest.json"],
-      ["プラグインを実行", "Actionsメニューを開き、DevelopmentからA11y Handoffを実行します。次回以降もローカルプラグインとして表示されます。", ""],
+      ["プラグインを実行", "Actionsメニューを開き、DevelopmentからA11y Checklistを実行します。次回以降もローカルプラグインとして表示されます。", ""],
     ],
     rebuildTitle: "コードを変更した後",
     rebuildCopy: "もう一度ビルドし、Figmaのプラグイン画面を閉じて開き直します。マニフェストの再読み込みは不要です。",
@@ -191,7 +191,7 @@ const copy = {
     steps: [
       ["다운로드하고 압축 풀기", "플러그인 ZIP을 다운로드한 뒤 a11y-handoff-figma-plugin 폴더를 여세요."],
       ["매니페스트 가져오기", "Figma 데스크톱에서 Plugins → Development → Import plugin from manifest를 선택하고 manifest.json을 지정하세요."],
-      ["검토 시작", "Development에서 A11y Handoff를 실행하세요. 다음부터도 로컬 플러그인 목록에 유지됩니다."],
+      ["검토 시작", "Development에서 A11y Checklist를 실행하세요. 다음부터도 로컬 플러그인 목록에 유지됩니다."],
     ],
     path: "매니페스트 경로",
     download: "플러그인 다운로드",
@@ -208,7 +208,7 @@ const copy = {
       ["플러그인 빌드", "Figma가 실행할 수 있는 JavaScript와 화면 파일을 만듭니다.", "npm run build"],
       ["Figma Design 파일 열기", "최신 Figma 데스크톱 앱에서 아무 Design 파일이나 엽니다. 바로 테스트하려면 레이어 하나를 선택하세요.", ""],
       ["매니페스트 가져오기", "캔버스를 오른쪽 클릭한 뒤 Plugins → Development → Import plugin from manifest를 선택하고 아래 파일을 지정합니다.", "apps/figma-plugin/manifest.json"],
-      ["플러그인 실행", "Actions 메뉴를 열고 Development에서 A11y Handoff를 실행합니다. 다음부터도 로컬 플러그인 목록에 유지됩니다.", ""],
+      ["플러그인 실행", "Actions 메뉴를 열고 Development에서 A11y Checklist를 실행합니다. 다음부터도 로컬 플러그인 목록에 유지됩니다.", ""],
     ],
     rebuildTitle: "코드를 수정한 뒤에는",
     rebuildCopy: "다시 빌드하고 Figma 플러그인 창을 닫았다가 Development에서 다시 여세요. 매니페스트를 다시 가져올 필요는 없습니다.",
@@ -250,7 +250,7 @@ export function FigmaPluginPage() {
         </div>
 
         <div className="plugin-demo" aria-label="Plugin interface preview">
-          <div className="plugin-demo-bar"><span /><span /><span /><strong>A11y Handoff</strong></div>
+          <div className="plugin-demo-bar"><span /><span /><span /><strong>A11y Checklist</strong></div>
           <div className="plugin-demo-tabs"><b>Audit</b><span>Checklist</span><span>Annotate</span><span>Export</span></div>
           <div className="plugin-demo-body">
             <p>{c.mockSelection}</p>

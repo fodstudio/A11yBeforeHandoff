@@ -1,5 +1,5 @@
 {
-  "name": "A11y Handoff",
+  "name": "A11y Checklist",
   "id": "a11y-before-handoff-local",
   "api": "1.0.0",
   "main": "dist/code.js",

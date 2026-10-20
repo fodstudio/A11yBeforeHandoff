@@ -12,6 +12,7 @@ This starter contains:
 - **URL accessibility report** — fetches a public page, runs a safe static-HTML first pass, scores automated findings, separates manual checks, and exports JSON.
 - **Public Figma review** — recognizes Design, Prototype, FigJam, and Slides share links, preserves targeted node IDs, embeds the public preview, and creates a team-focused manual review report without inventing an automated compliance score.
 - **Figma plugin MVP** — selection checks, a manual handoff checklist, annotation creation, and Markdown/JSON export.
+- **I18n handoff MVP** — browser-based pseudo-localization plus a separate offline Figma plugin for text expansion, RTL review, duplicate previews, and CSV export.
 - **Shared content package** — one typed source of truth for guidance used by both experiences.
 
 The product deliberately does not promise a full WCAG audit. It focuses on the decisions product teams can make and document during design and handoff.
@@ -23,6 +24,7 @@ apps/
   web/                 React + TypeScript + Vite
   server/              Express + Cheerio URL analysis API
   figma-plugin/        Figma Plugin API + TypeScript + esbuild
+  i18n-plugin/         Offline Figma localization stress-test plugin
 packages/
   content/             Shared categories, checks, and component guidance
 ```
@@ -46,6 +48,7 @@ Useful commands:
 npm run typecheck       # Type-check every workspace
 npm run build           # Build the website and Figma plugin
 npm run dev:plugin      # Rebuild the plugin when source files change
+npm run dev:i18n-plugin # Rebuild the I18n plugin when source files change
 ```
 
 ## Deploy to DigitalOcean App Platform
@@ -89,6 +92,8 @@ To build the plugin from source:
 The MVP can inspect a selection, record manual checklist progress on the selected node, create a visual annotation beside the selection, and copy or download a handoff report. Automated checks are intentionally limited to facts that Figma exposes reliably; they are prompts, not a certification.
 
 `npm run build:plugin` rebuilds the plugin and creates `apps/web/public/downloads/a11y-handoff-figma-plugin.zip`. Production deployment regenerates this download automatically before building the website.
+
+The localization MVP is available at `/i18n`. Its ready-to-install download is generated at `apps/web/public/downloads/i18n-handoff-figma-plugin.zip`; import `apps/i18n-plugin/manifest.json` when developing from source. The browser test and plugin work locally and require no translation API or additional hosting service.
 
 ## Product principles
 

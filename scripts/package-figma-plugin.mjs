@@ -2,10 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const root = new URL("../", import.meta.url);
-const output = new URL("../apps/web/public/downloads/a11y-handoff-figma-plugin.zip", import.meta.url);
-const folder = "a11y-handoff-figma-plugin";
-
-const installGuide = `A11y Handoff — Figma plugin MVP
+const a11yInstallGuide = `A11y Handoff — Figma plugin MVP
 
 EN
 1. Unzip this download.
@@ -29,11 +26,44 @@ This is a local development install and is not yet a Figma Community release.
 https://a11yhandoff.com/figma-plugin
 `;
 
-const sources = [
-  ["manifest.json", new URL("../apps/figma-plugin/manifest.json", import.meta.url)],
-  ["dist/code.js", new URL("../apps/figma-plugin/dist/code.js", import.meta.url)],
-  ["dist/ui.html", new URL("../apps/figma-plugin/dist/ui.html", import.meta.url)],
-  ["LICENSE", new URL("../LICENSE", import.meta.url)],
+const i18nInstallGuide = `I18n Handoff — localization stress-test plugin MVP
+
+EN
+1. Unzip this download.
+2. Open a Figma Design file in the Figma desktop app.
+3. Choose Plugins > Development > Import plugin from manifest.
+4. Select manifest.json from this folder, then run I18n Handoff from Development.
+
+日本語
+1. ダウンロードしたZIPを展開します。
+2. FigmaデスクトップアプリでDesignファイルを開きます。
+3. Plugins > Development > Import plugin from manifestを選びます。
+4. manifest.jsonを選び、DevelopmentからI18n Handoffを実行します。
+
+한국어
+1. 다운로드한 ZIP의 압축을 풉니다.
+2. Figma 데스크톱 앱에서 Design 파일을 엽니다.
+3. Plugins > Development > Import plugin from manifest를 선택합니다.
+4. manifest.json을 선택한 뒤 Development에서 I18n Handoff를 실행합니다.
+
+The plugin works offline. It does not send Figma content to a server.
+This is a local development install and is not yet a Figma Community release.
+https://a11yhandoff.com/i18n
+`;
+
+const packages = [
+  {
+    output: new URL("../apps/web/public/downloads/a11y-handoff-figma-plugin.zip", import.meta.url),
+    folder: "a11y-handoff-figma-plugin",
+    installGuide: a11yInstallGuide,
+    plugin: "figma-plugin"
+  },
+  {
+    output: new URL("../apps/web/public/downloads/i18n-handoff-figma-plugin.zip", import.meta.url),
+    folder: "i18n-handoff-figma-plugin",
+    installGuide: i18nInstallGuide,
+    plugin: "i18n-plugin"
+  }
 ];
 
 function crc32(buffer) {
@@ -100,33 +130,34 @@ function endOfCentralDirectory(entryCount, centralSize, centralOffset) {
   return record;
 }
 
-const entries = await Promise.all(sources.map(async ([name, url]) => ({
-  name: `${folder}/${name}`,
-  data: await readFile(fileURLToPath(url)),
-})));
-entries.push({ name: `${folder}/INSTALL.txt`, data: Buffer.from(installGuide) });
-
 // A fixed timestamp keeps the generated download identical across local and production builds.
 const timestamp = { time: 0, day: ((2000 - 1980) << 9) | (1 << 5) | 1 };
-const localParts = [];
-const centralParts = [];
-let offset = 0;
 
-for (const entry of entries) {
-  const checksum = crc32(entry.data);
-  const local = localHeader(entry.name, entry.data, checksum, timestamp);
-  localParts.push(local);
-  centralParts.push(centralHeader(entry.name, entry.data, checksum, timestamp, offset));
-  offset += local.length;
+async function createPackage(config) {
+  const sources = [
+    ["manifest.json", new URL(`../apps/${config.plugin}/manifest.json`, import.meta.url)],
+    ["dist/code.js", new URL(`../apps/${config.plugin}/dist/code.js`, import.meta.url)],
+    ["dist/ui.html", new URL(`../apps/${config.plugin}/dist/ui.html`, import.meta.url)],
+    ["LICENSE", new URL("../LICENSE", import.meta.url)]
+  ];
+  const entries = await Promise.all(sources.map(async ([name, url]) => ({ name: `${config.folder}/${name}`, data: await readFile(fileURLToPath(url)) })));
+  entries.push({ name: `${config.folder}/INSTALL.txt`, data: Buffer.from(config.installGuide) });
+
+  const localParts = [];
+  const centralParts = [];
+  let offset = 0;
+  for (const entry of entries) {
+    const checksum = crc32(entry.data);
+    const local = localHeader(entry.name, entry.data, checksum, timestamp);
+    localParts.push(local);
+    centralParts.push(centralHeader(entry.name, entry.data, checksum, timestamp, offset));
+    offset += local.length;
+  }
+  const centralDirectory = Buffer.concat(centralParts);
+  const archive = Buffer.concat([...localParts, centralDirectory, endOfCentralDirectory(entries.length, centralDirectory.length, offset)]);
+  await writeFile(config.output, archive);
+  console.log(`Created ${fileURLToPath(config.output)} (${archive.length} bytes)`);
 }
 
-const centralDirectory = Buffer.concat(centralParts);
-const archive = Buffer.concat([
-  ...localParts,
-  centralDirectory,
-  endOfCentralDirectory(entries.length, centralDirectory.length, offset),
-]);
-
 await mkdir(new URL("../apps/web/public/downloads/", import.meta.url), { recursive: true });
-await writeFile(output, archive);
-console.log(`Created ${fileURLToPath(output)} (${archive.length} bytes)`);
+for (const config of packages) await createPackage(config);

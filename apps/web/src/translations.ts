@@ -1,7 +1,7 @@
 import type { Locale } from "@a11y/content";
 
 const en = {
-  "skip": "Skip to main content", "nav.audit": "URL Audit", "nav.checklist": "Checklist", "nav.components": "Components", "nav.plugin": "Plugin", "nav.about": "About", "nav.start": "Run a URL audit", "theme.dark": "Use dark mode", "theme.light": "Use light mode",
+  "skip": "Skip to main content", "nav.audit": "URL Audit", "nav.checklist": "Checklist", "nav.components": "Components", "nav.i18n": "I18n", "nav.plugin": "A11y Plugin", "nav.about": "About", "nav.start": "Run a URL audit", "theme.dark": "Use dark mode", "theme.light": "Use light mode",
   "footer.line1": "Better questions before handoff.", "footer.line2": "Free, practical, and made for everyone building digital products.", "footer.line3": "Not a replacement for testing with disabled people.", "footer.copyright": "© 2026 A11y Handoff contributors. Free to use, modify, and share under the MIT License.", "footer.contact": "Contact us",
   "home.eyebrow": "Accessibility starts before code", "home.title1": "Design with fewer", "home.title2": "barriers.", "home.copy": "A practical accessibility handoff tool for everyone building digital products.", "home.open": "Open the checklist", "home.browse": "Browse by component", "home.checks": "focused checks", "home.guides": "component guides", "home.free": "and open",
   "home.idea": "01 — THE IDEA", "home.ideaTitle1": "Not another", "home.ideaTitle2": "compliance wall.", "home.ideaP1": "Accessibility guidance often arrives too late and reads like a legal document.", "home.ideaP2": "This tool translates the standard into design decisions: what to explore, what to annotate, and what to ask before pixels become code.", "home.principle1": "Plain language", "home.principle2": "Real components", "home.principle3": "Human review",
@@ -19,7 +19,7 @@ type Dictionary = Record<MessageKey, string>;
 
 const ja: Dictionary = {
   ...en,
-  "skip":"メインコンテンツへ移動", "nav.audit":"URL診断", "nav.checklist":"チェックリスト", "nav.components":"コンポーネント", "nav.plugin":"プラグイン", "nav.about":"概要", "nav.start":"URL診断を始める", "theme.dark":"ダークモードにする", "theme.light":"ライトモードにする",
+  "skip":"メインコンテンツへ移動", "nav.audit":"URL診断", "nav.checklist":"チェックリスト", "nav.components":"コンポーネント", "nav.i18n":"I18n", "nav.plugin":"A11yプラグイン", "nav.about":"概要", "nav.start":"URL診断を始める", "theme.dark":"ダークモードにする", "theme.light":"ライトモードにする",
   "footer.line1":"ハンドオフ前に、より良い問いを。", "footer.line2":"無料で実践的、デジタルプロダクトをつくるすべての人のために。", "footer.line3":"障害のある人によるテストの代わりではありません。", "footer.copyright":"© 2026 A11y Handoff contributors. MITライセンスのもと、無料で利用・変更・共有できます。", "footer.contact":"お問い合わせ",
   "home.eyebrow":"アクセシビリティは実装前から", "home.title1":"障壁を減らす", "home.title2":"デザイン。", "home.copy":"デジタルプロダクトをつくるすべての人のための、実践的なアクセシビリティ・ハンドオフツール。", "home.open":"チェックリストを開く", "home.browse":"コンポーネントから探す", "home.checks":"の重点チェック", "home.guides":"のガイド", "home.free":"・オープン",
   "home.idea":"01 — コンセプト", "home.ideaTitle1":"また一つの", "home.ideaTitle2":"規則の壁ではない。", "home.ideaP1":"アクセシビリティの情報は遅すぎる段階で届き、法律文書のように読みにくいことがあります。", "home.ideaP2":"このツールは基準を、何を検討し、何を注釈し、実装前に何を問うかというデザイン判断に変えます。", "home.principle1":"分かりやすい言葉", "home.principle2":"実際のコンポーネント", "home.principle3":"人による確認",
@@ -35,7 +35,7 @@ const ja: Dictionary = {
 
 const ko: Dictionary = {
   ...en,
-  "skip":"본문으로 건너뛰기", "nav.audit":"URL 진단", "nav.checklist":"체크리스트", "nav.components":"컴포넌트", "nav.plugin":"플러그인", "nav.about":"소개", "nav.start":"URL 진단 시작", "theme.dark":"다크 모드 사용", "theme.light":"라이트 모드 사용",
+  "skip":"본문으로 건너뛰기", "nav.audit":"URL 진단", "nav.checklist":"체크리스트", "nav.components":"컴포넌트", "nav.i18n":"I18n", "nav.plugin":"A11y 플러그인", "nav.about":"소개", "nav.start":"URL 진단 시작", "theme.dark":"다크 모드 사용", "theme.light":"라이트 모드 사용",
   "footer.line1":"핸드오프 전에 더 좋은 질문을.", "footer.line2":"무료이고 실용적인, 디지털 제품을 만드는 모두의 도구.", "footer.line3":"장애인 사용자 테스트를 대신하지 않습니다.", "footer.copyright":"© 2026 A11y Handoff contributors. MIT 라이선스로 무료 사용·수정·공유할 수 있습니다.", "footer.contact":"문의하기",
   "home.eyebrow":"접근성은 코드보다 먼저", "home.title1":"장벽을 줄이는", "home.title2":"디자인.", "home.copy":"디지털 제품을 만드는 모두를 위한 실용적인 접근성 핸드오프 도구.", "home.open":"체크리스트 열기", "home.browse":"컴포넌트로 찾아보기", "home.checks":"개 핵심 체크", "home.guides":"개 컴포넌트 가이드", "home.free":"· 오픈",
   "home.idea":"01 — 아이디어", "home.ideaTitle1":"또 하나의", "home.ideaTitle2":"규정 장벽이 아닌 도구.", "home.ideaP1":"접근성 가이드는 너무 늦게 도착하고 법률 문서처럼 읽히곤 합니다.", "home.ideaP2":"이 도구는 표준을 무엇을 탐색하고, 표시하고, 픽셀이 코드가 되기 전에 물어볼지에 대한 디자인 결정으로 바꿉니다.", "home.principle1":"쉬운 언어", "home.principle2":"실제 컴포넌트", "home.principle3":"사람의 검토",

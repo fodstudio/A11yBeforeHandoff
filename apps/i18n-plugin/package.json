@@ -1,0 +1,16 @@
+{
+  "name": "@a11y/i18n-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "typecheck": "tsc -p tsconfig.json --pretty false"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.106.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.3"
+  }
+}
