@@ -363,7 +363,7 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 500; }
 .plugin-privacy h2 { max-width: 700px; margin: 0 0 20px; font-size: clamp(44px, 5vw, 72px); line-height: .98; letter-spacing: -.06em; }
 .plugin-privacy div > p:not(.section-number) { max-width: 680px; color: color-mix(in srgb, var(--solid-text) 70%, transparent); line-height: 1.75; }
 .plugin-privacy-badges { grid-column: 2; display: flex; flex-wrap: wrap; gap: 8px; }
-.plugin-privacy-badges span { padding: 9px 12px; border: 1px solid color-mix(in srgb, var(--solid-text) 28%, transparent); color: var(--acid); font: 9px var(--mono); text-transform: uppercase; }
+.plugin-privacy-badges span { padding: 9px 12px; border: 1px solid var(--acid); color: var(--on-acid); background: var(--acid); font: 700 11px var(--mono); text-transform: uppercase; }
 
 .plugin-install { display: grid; grid-template-columns: .75fr 1.25fr; gap: 90px; padding-block: 125px; scroll-margin-top: 40px; }
 .plugin-install-heading h2 { margin: 0 0 24px; font-size: clamp(54px, 6vw, 84px); line-height: .9; letter-spacing: -.065em; }
