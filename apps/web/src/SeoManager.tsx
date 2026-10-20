@@ -73,7 +73,7 @@ function setCanonical(url: string) {
 }
 
 function setAlternates(basePath: string) {
-  document.head.querySelectorAll('link[data-a11y-alternate="true"]').forEach((element) => element.remove());
+  document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((element) => element.remove());
   for (const alternateLocale of supportedLocales) {
     const element = document.createElement("link");
     element.rel = "alternate";
