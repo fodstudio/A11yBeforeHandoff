@@ -373,7 +373,7 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 500; }
 .plugin-install > ol > li > span { padding-top: 3px; font: 9px var(--mono); }
 .plugin-install > ol > li h3 { margin: 0 0 7px; font-size: 18px; }
 .plugin-install > ol > li p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
-.plugin-download-card { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px; border: 1px solid var(--ink); background: var(--acid); box-shadow: 5px 5px 0 var(--ink); }
+.plugin-download-card { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px; border: 1px solid var(--ink); color: var(--on-acid); background: var(--acid); box-shadow: 5px 5px 0 var(--ink); }
 .plugin-download-card > div { display: grid; gap: 5px; }
 .plugin-download-card strong { font-size: 17px; letter-spacing: -.02em; }
 .plugin-download-card span { font: 9px var(--mono); text-transform: uppercase; }
