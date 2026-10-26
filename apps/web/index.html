@@ -24,22 +24,38 @@
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "Organization",
+            "@id": "https://a11yhandoff.com/#organization",
+            "name": "A11y Handoff",
+            "url": "https://a11yhandoff.com/en",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://a11yhandoff.com/favicon.svg"
+            },
+            "sameAs": ["https://github.com/fodstudio/A11yBeforeHandoff"]
+          },
+          {
             "@type": "WebSite",
             "@id": "https://a11yhandoff.com/#website",
             "url": "https://a11yhandoff.com/",
             "name": "A11y Handoff",
             "alternateName": "A11y Before Handoff",
             "description": "A practical accessibility handoff tool for everyone building digital products.",
-            "inLanguage": ["en", "ja", "ko"]
+            "inLanguage": ["en", "ja", "ko"],
+            "publisher": { "@id": "https://a11yhandoff.com/#organization" }
           },
           {
             "@type": "WebApplication",
+            "@id": "https://a11yhandoff.com/#application",
             "name": "A11y Handoff",
             "url": "https://a11yhandoff.com/",
             "applicationCategory": "DesignApplication",
+            "applicationSubCategory": "Accessibility",
             "operatingSystem": "Any",
             "isAccessibleForFree": true,
             "description": "Free accessibility checklist, URL audit, component guidance, and Figma handoff tools based on WCAG and EAA context.",
+            "publisher": { "@id": "https://a11yhandoff.com/#organization" },
+            "sameAs": ["https://github.com/fodstudio/A11yBeforeHandoff"],
             "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
           }
         ]

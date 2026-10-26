@@ -2,6 +2,10 @@
 
 A practical accessibility handoff tool for everyone building digital products.
 
+**Live website:** [a11yhandoff.com](https://a11yhandoff.com/en)
+
+[Run a URL accessibility audit](https://a11yhandoff.com/en/audit) · [Use the WCAG checklist](https://a11yhandoff.com/en/checklist) · [Explore accessible component guides](https://a11yhandoff.com/en/components) · [Download the Figma plugin](https://a11yhandoff.com/en/figma-plugin)
+
 See [SEO.md](./SEO.md) for the search positioning, page-to-query map, content priorities, and launch checklist.
 
 This starter contains:

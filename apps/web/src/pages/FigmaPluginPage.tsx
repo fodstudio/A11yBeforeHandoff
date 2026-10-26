@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { checklist } from "@a11y/content";
 import { usePreferences } from "../preferences";
+import { localizedPath } from "../routing";
 
 const copy = {
   en: {
@@ -319,7 +320,7 @@ export function FigmaPluginPage() {
         </section>
       </section>
 
-      <section className="page-width plugin-cta"><p className="section-number">FIGMA → HANDOFF</p><h2>{c.cta}</h2><p>{c.ctaCopy}</p><Link className="button button-primary" to="/checklist">{c.openChecklist} <span aria-hidden="true">→</span></Link></section>
+      <section className="page-width plugin-cta"><p className="section-number">FIGMA → HANDOFF</p><h2>{c.cta}</h2><p>{c.ctaCopy}</p><Link className="button button-primary" to={localizedPath(locale, "/checklist")}>{c.openChecklist} <span aria-hidden="true">→</span></Link></section>
     </div>
   );
 }

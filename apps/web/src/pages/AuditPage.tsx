@@ -2,6 +2,7 @@ import { useMemo, useState, type CSSProperties, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { wcagUnderstandingUrl } from "@a11y/content";
 import { usePreferences } from "../preferences";
+import { localizedPath } from "../routing";
 
 type Status = "pass" | "warning" | "fail" | "manual";
 type Category = "document" | "structure" | "images" | "forms" | "interaction" | "media";
@@ -186,7 +187,7 @@ export function AuditPage({ embedded = false }: { embedded?: boolean }) {
               <p>{c.levelHint}</p>
             </fieldset>
           </div>}
-          {embedded && <div className="home-search-meta"><span>{c.quickDefault}</span><Link to="/audit">{c.advanced} <span aria-hidden="true">↗</span></Link></div>}
+          {embedded && <div className="home-search-meta"><span>{c.quickDefault}</span><Link to={localizedPath(locale, "/audit")}>{c.advanced} <span aria-hidden="true">↗</span></Link></div>}
           <p className="url-privacy"><span aria-hidden="true">◉</span> {c.privacy}</p>
         </form>
       </header>

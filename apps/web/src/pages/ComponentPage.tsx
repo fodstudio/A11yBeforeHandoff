@@ -2,18 +2,19 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { getChecklistItem, getComponentGuide, localizeComponentGuide } from "@a11y/content";
 import { ChecklistCard } from "../components/ChecklistCard";
 import { usePreferences } from "../preferences";
+import { localizedPath } from "../routing";
 
 export function ComponentPage() {
   const { slug = "" } = useParams();
   const baseGuide = getComponentGuide(slug);
   const { locale, t } = usePreferences();
-  if (!baseGuide) return <Navigate to="/components" replace />;
+  if (!baseGuide) return <Navigate to={localizedPath(locale, "/components")} replace />;
   const guide = localizeComponentGuide(baseGuide, locale);
   const items = guide.checklistIds.map(getChecklistItem).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   return (
     <div className="page-width page-content component-detail">
-      <Link className="back-link" to="/components"><span aria-hidden="true">←</span> {t("detail.all")}</Link>
+      <Link className="back-link" to={localizedPath(locale, "/components")}><span aria-hidden="true">←</span> {t("detail.all")}</Link>
       <header className="component-detail-hero">
         <div className="detail-icon" aria-hidden="true">{guide.icon}</div>
         <div><p className="eyebrow"><span /> {t("detail.guide")}</p><h1>{guide.name}</h1><p>{guide.intro}</p></div>

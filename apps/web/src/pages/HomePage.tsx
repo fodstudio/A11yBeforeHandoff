@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { categories, categoryTranslations, checklist, componentGuides, localizeComponentGuide } from "@a11y/content";
 import { ChecklistCard } from "../components/ChecklistCard";
 import { usePreferences } from "../preferences";
+import { localizedPath } from "../routing";
 import { AuditPage } from "./AuditPage";
 
 const sampleItems = ["contrast-text", "plain-labels", "focus-visible"]
@@ -84,8 +85,8 @@ export function HomePage() {
               {plugin.features.map((feature, index) => <li key={feature}><span>0{index + 1}</span>{feature}</li>)}
             </ul>
             <div className="home-plugin-actions">
-              <Link className="button button-primary" to="/figma-plugin">{plugin.primary} <span aria-hidden="true">→</span></Link>
-              <Link className="text-link" to="/figma-plugin#install">{plugin.secondary} <span aria-hidden="true">↗</span></Link>
+              <Link className="button button-primary" to={localizedPath(locale, "/figma-plugin")}>{plugin.primary} <span aria-hidden="true">→</span></Link>
+              <Link className="text-link" to={localizedPath(locale, "/figma-plugin#install")}>{plugin.secondary} <span aria-hidden="true">↗</span></Link>
             </div>
             <div className="home-plugin-trust">{plugin.trust.map((item) => <span key={item}>◉ {item}</span>)}</div>
           </div>
@@ -134,7 +135,7 @@ export function HomePage() {
         <div className="preview-grid">
           {sampleItems.map((item) => <ChecklistCard key={item.id} item={item} compact />)}
         </div>
-        <Link className="button button-dark center-button" to="/checklist">{t("home.all").replace("{count}", String(checklist.length))} <span aria-hidden="true">→</span></Link>
+        <Link className="button button-dark center-button" to={localizedPath(locale, "/checklist")}>{t("home.all").replace("{count}", String(checklist.length))} <span aria-hidden="true">→</span></Link>
       </section>
 
       <section className="component-strip">
@@ -148,7 +149,7 @@ export function HomePage() {
           </div>
           <div className="component-card-grid">
             {guides.map((guide, index) => (
-              <Link className="component-card" to={`/components/${guide.slug}`} key={guide.slug}>
+              <Link className="component-card" to={localizedPath(locale, `/components/${guide.slug}`)} key={guide.slug}>
                 <span className="component-index">0{index + 1}</span>
                 <span className="component-icon" aria-hidden="true">{guide.icon}</span>
                 <h3>{guide.name}</h3>
@@ -164,7 +165,7 @@ export function HomePage() {
         <p className="section-number">{t("home.foundations")}</p>
         <div className="category-list">
           {localizedCategories.map((category, index) => (
-            <Link to={`/checklist?category=${category.id}`} key={category.id}>
+            <Link to={localizedPath(locale, `/checklist?category=${category.id}`)} key={category.id}>
               <span>0{index + 1}</span>
               <strong>{category.label}</strong>
               <p>{category.description}</p>

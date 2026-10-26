@@ -34,13 +34,15 @@ Primary search themes:
 
 ## Launch checklist
 
-1. Connect `a11yhandoff.com` and redirect the temporary DigitalOcean URL to it.
-2. Verify the domain in Google Search Console.
-3. Submit `https://a11yhandoff.com/sitemap.xml`.
-4. Request indexing for the home page, audit, checklist, components, and plugin pages.
+1. ✅ Connect `a11yhandoff.com` and redirect the temporary DigitalOcean URL to it.
+2. ✅ Verify the domain in Google Search Console.
+3. ✅ Submit `https://a11yhandoff.com/sitemap.xml`.
+4. ✅ Request indexing for the home page, audit, checklist, components, and plugin pages.
 5. Test structured data with Google's Rich Results Test.
 6. Add a 1200×630 social preview image before broad promotion.
-7. Create crawlable `/ja/` and `/ko/` URL structures before adding `hreflang` tags.
+7. ✅ Create crawlable `/ja/` and `/ko/` URL structures with reciprocal `hreflang` tags.
+8. Publish the plugin in Figma Community and link back to the official plugin page.
+9. Add practical long-form guides for accessibility handoff, focus order, contrast, accessible names, and mobile accessibility.
 
 ## Measurement
 

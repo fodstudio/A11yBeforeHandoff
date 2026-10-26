@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { componentGuides, localizeComponentGuide } from "@a11y/content";
 import { usePreferences } from "../preferences";
+import { localizedPath } from "../routing";
 
 export function ComponentsPage() {
   const { locale, t } = usePreferences();
@@ -16,7 +17,7 @@ export function ComponentsPage() {
       </header>
       <div className="component-library">
         {guides.map((guide, index) => (
-          <Link to={`/components/${guide.slug}`} className="library-card" key={guide.slug}>
+          <Link to={localizedPath(locale, `/components/${guide.slug}`)} className="library-card" key={guide.slug}>
             <span className="library-number">0{index + 1}</span>
             <span className="library-icon" aria-hidden="true">{guide.icon}</span>
             <div><h2>{guide.name}</h2><p>{guide.summary}</p></div>
